@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.MainActivity">
+
+    <fragment
+        android:id="@+id/navHost"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/nav_host" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_8mdp"
+        android:background="@drawable/shadow_light"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <soup.neumorphism.NeumorphCardView
+                android:id="@+id/home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:neumorph_backgroundColor="@color/background"
+                app:neumorph_shadowColorDark="@color/shadow_dark"
+                app:neumorph_shadowColorLight="@color/shadow_light"
+                app:neumorph_shadowElevation="@dimen/_5mdp"
+                app:neumorph_shapeAppearance="@style/NeumorphismCard"
+                app:neumorph_shapeType="pressed"
+                tools:ignore="missingConstraints">
+
+
+                <ImageView
+                    android:id="@+id/homeImg"
+                    android:layout_width="@dimen/_32mdp"
+                    android:layout_height="@dimen/_32mdp"
+                    android:padding="@dimen/_5mdp"
+                    android:src="@drawable/ic_home"
+                    app:tint="@color/crayola" />
+
+
+            </soup.neumorphism.NeumorphCardView>
+
+            <soup.neumorphism.NeumorphCardView
+                android:id="@+id/search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:neumorph_backgroundColor="@color/background"
+                app:neumorph_shadowColorDark="@color/shadow_dark"
+                app:neumorph_shadowColorLight="@color/shadow_light"
+                app:neumorph_shadowElevation="@dimen/_5mdp"
+                app:neumorph_shapeAppearance="@style/NeumorphismCard"
+                tools:ignore="missingConstraints">
+
+
+                <ImageView
+                    android:id="@+id/searchImg"
+                    android:layout_width="@dimen/_32mdp"
+                    android:layout_height="@dimen/_32mdp"
+                    android:padding="@dimen/_5mdp"
+                    android:src="@drawable/ic_search"
+                    app:tint="@color/primary" />
+
+
+            </soup.neumorphism.NeumorphCardView>
+
+            <soup.neumorphism.NeumorphCardView
+                android:id="@+id/favorit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:neumorph_backgroundColor="@color/background"
+                app:neumorph_shadowColorDark="@color/shadow_dark"
+                app:neumorph_shadowColorLight="@color/shadow_light"
+                app:neumorph_shadowElevation="@dimen/_5mdp"
+                app:neumorph_shapeAppearance="@style/NeumorphismCard"
+                tools:ignore="missingConstraints">
+
+
+                <ImageView
+                    android:id="@+id/favoritImg"
+                    android:layout_width="@dimen/_32mdp"
+                    android:layout_height="@dimen/_32mdp"
+                    android:padding="@dimen/_5mdp"
+                    android:src="@drawable/ic_favorite"
+                    app:tint="@color/primary" />
+
+
+            </soup.neumorphism.NeumorphCardView>
+
+            <soup.neumorphism.NeumorphCardView
+                android:id="@+id/paging"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:neumorph_backgroundColor="@color/background"
+                app:neumorph_shadowColorDark="@color/shadow_dark"
+                app:neumorph_shadowColorLight="@color/shadow_light"
+                app:neumorph_shadowElevation="@dimen/_5mdp"
+                app:neumorph_shapeAppearance="@style/NeumorphismCard"
+                tools:ignore="missingConstraints">
+
+
+                <ImageView
+                    android:id="@+id/pagingImg"
+                    android:layout_width="@dimen/_32mdp"
+                    android:layout_height="@dimen/_32mdp"
+                    android:padding="@dimen/_5mdp"
+                    android:src="@drawable/ic_paging"
+                    app:tint="@color/primary" />
+
+
+            </soup.neumorphism.NeumorphCardView>
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:constraint_referenced_ids="home,search,favorit,paging" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

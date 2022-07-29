@@ -1,0 +1,20 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven {url 'https://maven.google.com'}
+        google()
+        maven {url "https://jitpack.io"}
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        maven {url 'https://maven.google.com'}
+        google()
+        maven {url "https://jitpack.io"}
+        mavenCentral()
+    }
+}
+rootProject.name = "Kotlin Top Movies 2"
+include ':app'

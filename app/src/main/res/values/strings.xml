@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">TopMovies2</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_favorite">Favorite</string>
+    <string name="todo">TODO</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="submit">Submit</string>
+    <string name="fillAllFields">Please fill all fields</string>
+    <string name="genres">Genres</string>
+    <string name="lastmovies">LastMovies</string>
+    <string name="moreinfo">MoreInfo</string>
+    <string name="search">search....</string>
+    <string name="not_found_any_item">Not found any item !</string>
+    <string name="summary">Summary</string>
+    <string name="actors">Actors</string>
+</resources>

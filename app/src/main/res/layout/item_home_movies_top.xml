@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_10mdp"
+    app:cardCornerRadius="@dimen/_10mdp"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <soup.neumorphism.NeumorphCardView
+            android:id="@+id/topMoviesImg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/_10mdp"
+            app:neumorph_shapeType="basin"
+            app:layout_constraintTop_toTopOf="parent"
+            app:neumorph_shadowColorDark="@color/shadow_dark"
+            app:neumorph_shadowColorLight="@color/shadow_light"
+            app:neumorph_shadowElevation="@dimen/_5mdp"
+            app:neumorph_shapeAppearance="@style/NeumorphismCard"
+            tools:ignore="missingConstraints">
+
+        <!-- Poster -->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/moviesPosterImg"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_300mdp"
+            android:layout_margin="@dimen/_10mdp"
+            app:shapeAppearanceOverlay="@style/RoundedImageView"
+            tools:src="@tools:sample/backgrounds/scenic"
+            app:layout_constraintTop_toTopOf="parent"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/todo" />
+        </soup.neumorphism.NeumorphCardView>
+
+        <!-- ShadowShape -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_150mdp"
+            app:layout_constraintBottom_toBottomOf="@+id/topMoviesImg"
+            android:id="@+id/shadow"
+            android:background="@drawable/shadow"/>
+
+        <!-- Name -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/moviesNameTxt"
+            android:layout_marginHorizontal="@dimen/_20mdp"
+            android:layout_marginBottom="@dimen/_5mdp"
+            app:layout_constraintBottom_toTopOf="@+id/moviesInfoTxt"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:textSize="@dimen/_14font_mdp"
+            android:maxLines="1"
+            android:ellipsize="end"/>
+
+
+        <!-- Info -->
+        <TextView
+            android:id="@+id/moviesInfoTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_20mdp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:textColor="@color/philippineSilver"
+            android:textSize="@dimen/_12font_mdp"
+            app:drawableStartCompat="@drawable/ic_star"
+            app:drawableTint="@color/crayola"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="@dimen/_10mdp"
+            app:layout_constraintBottom_toBottomOf="@+id/topMoviesImg"
+            tools:layout_editor_absoluteX="26dp" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

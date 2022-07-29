@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.detail.DetailFragment">
+
+    <!-- ScrollView -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/detailScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Images -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/posterImagesLay"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_400mdp"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <soup.neumorphism.NeumorphCardView
+                    android:id="@+id/topMoviesImgBig"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/_5mdp"
+                    android:padding="@dimen/_10mdp"
+                    app:neumorph_shapeType="basin"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:neumorph_shadowColorDark="@color/shadow_dark"
+                    app:neumorph_shadowColorLight="@color/shadow_light"
+                    app:neumorph_shadowElevation="@dimen/_5mdp"
+                    app:neumorph_shapeAppearance="@style/NeumorphismCard"
+                    tools:ignore="missingConstraints">
+
+                <!-- Big Image -->
+                <ImageView
+                    android:id="@+id/posterBigImg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:alpha="0.3"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/todo" />
+
+                </soup.neumorphism.NeumorphCardView>
+
+                <soup.neumorphism.NeumorphCardView
+                    android:id="@+id/topMoviesImgNormol"
+                    android:layout_width="@dimen/_210mdp"
+                    android:layout_height="@dimen/_300mdp"
+                    android:padding="@dimen/_10mdp"
+                    app:neumorph_shapeType="basin"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:neumorph_shadowColorDark="@color/shadow_dark"
+                    app:neumorph_shadowColorLight="@color/shadow_light"
+                    app:neumorph_shadowElevation="@dimen/_5mdp"
+                    app:neumorph_shapeAppearance="@style/NeumorphismCard"
+                    tools:ignore="missingConstraints">
+
+                <!-- Normal Image -->
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/posterNormalImg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/_15mdp"
+                    android:scaleType="centerCrop"
+                    app:shapeAppearanceOverlay="@style/RoundedImageView" />
+
+                </soup.neumorphism.NeumorphCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Back Fav -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10mdp"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <soup.neumorphism.NeumorphCardView
+                    android:layout_width="@dimen/_64mdp"
+                    android:layout_height="@dimen/_64mdp"
+                    android:id="@+id/back"
+                    tools:ignore="missingConstraints"
+                    app:neumorph_shapeType="basin"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:neumorph_shadowColorDark="@color/musicShadow_dark"
+                    app:neumorph_shadowColorLight="@color/musicShadow_light"
+                    app:neumorph_shapeAppearance="@style/NeumorphismImageLarg">
+                <ImageView
+                    android:id="@+id/backImg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/background"
+                    android:padding="@dimen/_8mdp"
+                    android:src="@drawable/ic_back"
+                    app:tint="@color/black"
+                    android:contentDescription="@string/todo" />
+
+                </soup.neumorphism.NeumorphCardView>
+
+                <soup.neumorphism.NeumorphCardView
+                    android:layout_width="@dimen/_64mdp"
+                    android:layout_height="@dimen/_64mdp"
+                    android:id="@+id/fav"
+                    tools:ignore="missingConstraints"
+                    app:neumorph_shapeType="basin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:neumorph_shadowColorDark="@color/musicShadow_dark"
+                    app:neumorph_shadowColorLight="@color/musicShadow_light"
+                    app:neumorph_shapeAppearance="@style/NeumorphismImageLarg">
+                <ImageView
+                    android:id="@+id/favImg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/background"
+                    android:padding="@dimen/_8mdp"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/ic_favorite"
+                    app:tint="@color/black" />
+                </soup.neumorphism.NeumorphCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Info Lay -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_200mdp"
+                android:id="@+id/infoLay"
+                android:background="@drawable/shadow"
+                app:layout_constraintBottom_toBottomOf="@+id/posterImagesLay">
+
+                <!-- Title -->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/moviesNameTxt"
+                    android:ellipsize="end"
+                    style="@style/TextViewLightStyle"
+                    android:layout_marginHorizontal="@dimen/_10mdp"
+                    android:maxLines="2"
+                    android:gravity="center"
+                    android:layout_marginBottom="@dimen/_5mdp"
+                    app:layout_constraintBottom_toTopOf="@+id/otherInfoLay"
+                    android:textSize="@dimen/_20font_mdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+
+            <!-- Other Info -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/otherInfoLay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_5mdp"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <!-- Rate -->
+                    <TextView
+                        android:id="@+id/moviesRateTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/_5mdp"
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="@color/philippineSilver"
+                        android:textSize="@dimen/_10font_mdp"
+                        app:drawableStartCompat="@drawable/ic_star"
+                        app:drawableTint="@color/philippineSilver"
+                        app:layout_constraintEnd_toStartOf="@+id/moviesTimeTxt"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <!-- Time -->
+                    <TextView
+                        android:id="@+id/moviesTimeTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/_5mdp"
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="@color/philippineSilver"
+                        android:textSize="@dimen/_10font_mdp"
+                        app:drawableStartCompat="@drawable/ic_time"
+                        app:drawableTint="@color/philippineSilver"
+                        app:layout_constraintEnd_toStartOf="@+id/moviesDateTxt"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/moviesRateTxt"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <!-- Date -->
+                    <TextView
+                        android:id="@+id/moviesDateTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/_5mdp"
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="@color/philippineSilver"
+                        android:textSize="@dimen/_10font_mdp"
+                        app:drawableStartCompat="@drawable/ic_calendar_today"
+                        app:drawableTint="@color/philippineSilver"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/moviesTimeTxt"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!-- Summary -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/summaryLay"
+                android:layout_marginTop="@dimen/_10mdp"
+                app:layout_constraintTop_toBottomOf="@+id/infoLay"
+                android:layout_marginHorizontal="@dimen/_10mdp">
+
+
+                <!-- Title -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/moviesSummaryTitle"
+                    android:drawablePadding="@dimen/_5mdp"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="#0065FF"
+                    android:textSize="@dimen/_12font_mdp"
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/ic_info"
+                    android:text="@string/summary"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:drawableTint="@color/alizarin_crimson" />
+
+                <soup.neumorphism.NeumorphCardView
+                    android:id="@+id/txtSummary"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/_15mdp"
+                    app:neumorph_shapeType="basin"
+                    android:layout_marginTop="@dimen/_20mdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:neumorph_shadowColorDark="@color/shadow_dark"
+                    app:neumorph_shadowColorLight="@color/shadow_light"
+                    app:neumorph_shadowElevation="@dimen/_5mdp"
+                    app:neumorph_shapeAppearance="@style/NeumorphismCard"
+                    tools:ignore="missingConstraints">
+                <!-- Info -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/moviesSummaryInfo"
+                    app:layout_constraintTop_toBottomOf="@+id/moviesSummaryTitle"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10font_mdp"/>
+
+                </soup.neumorphism.NeumorphCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Actors -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/actorsLay"
+                android:layout_marginTop="@dimen/_5mdp"
+                app:layout_constraintTop_toBottomOf="@+id/summaryLay"
+                android:layout_marginHorizontal="@dimen/_10mdp">
+
+                <!-- Title -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/moviesActorsTitle"
+                    android:drawablePadding="@dimen/_5mdp"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="#0065FF"
+                    android:textSize="@dimen/_12font_mdp"
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/ic_person"
+                    android:text="@string/actors"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:drawableTint="@color/alizarin_crimson" />
+
+                <soup.neumorphism.NeumorphCardView
+                    android:id="@+id/txtActor"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/_15mdp"
+                    app:neumorph_shapeType="basin"
+                    android:layout_marginTop="@dimen/_20mdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:neumorph_shadowColorDark="@color/shadow_dark"
+                    app:neumorph_shadowColorLight="@color/shadow_light"
+                    app:neumorph_shadowElevation="@dimen/_5mdp"
+                    app:neumorph_shapeAppearance="@style/NeumorphismCard"
+                    tools:ignore="missingConstraints">
+
+                <!-- Info -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/moviesActorsInfo"
+                    app:layout_constraintTop_toBottomOf="@+id/moviesActorsTitle"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10font_mdp"/>
+
+                </soup.neumorphism.NeumorphCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Images -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:id="@+id/imagesRecyclerView"
+                app:layout_constraintTop_toBottomOf="@+id/actorsLay"
+                android:layout_marginVertical="@dimen/_10mdp"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Loading -->
+    <ProgressBar
+        android:id="@+id/detailLoading"
+        android:layout_width="@dimen/_20mdp"
+        android:layout_height="@dimen/_20mdp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
