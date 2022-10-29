@@ -1,7 +1,7 @@
 package com.example.kotlintopmovies2.ui.home.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.kotlintopmovies2.model.home.ResponseMoviesList
+import com.example.kotlintopmovies2.data.model.home.ResponseMoviesList
 
 object ListMovieDiffUtil : DiffUtil.ItemCallback<ResponseMoviesList.Data>() {
     override fun areItemsTheSame(

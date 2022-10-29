@@ -37,20 +37,17 @@ class ImagesAdapter @Inject constructor(): RecyclerView.Adapter<ImagesAdapter.My
                     crossfade(800)
                 }
             }
-
         }
     }
 
     private val differCallBack = object : DiffUtil.ItemCallback<String>(){
         override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
-
             return oldItem == newItem
         }
-
         override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
             return oldItem == newItem
         }
-
     }
+
     val differ = AsyncListDiffer(this , differCallBack)
 }

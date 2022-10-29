@@ -18,8 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class FavoriteFragment1 : Fragment() {
 
     private lateinit var binding: FragmentFavoriteBinding
-
-    private val favoritAdapter: FavoriteMoviesAdapter by lazy { FavoriteMoviesAdapter(requireContext()) }
+    private val favoriteAdapter: FavoriteMoviesAdapter by lazy { FavoriteMoviesAdapter(requireContext()) }
 
     //Other
     private val viewModel: FavoriteViewModel by viewModels()
@@ -39,12 +38,12 @@ class FavoriteFragment1 : Fragment() {
             viewModel.loadFavoriteList()
             //List
             viewModel.favoriteList.observe(viewLifecycleOwner) {
-                favoritAdapter.setDataDiffer(it)
-                favoriteRecycler.initRecycler(LinearLayoutManager(requireContext()), favoritAdapter)
+                favoriteAdapter.setDataDiffer(it)
+                favoriteRecycler.initRecycler(LinearLayoutManager(requireContext()), favoriteAdapter)
             }
 
             //Click
-            favoritAdapter.setOnItemClickListener {
+            favoriteAdapter.setOnItemClickListener {
                 val direction = FavoriteFragment1Directions.actionToDetail(it.id)
                 findNavController().navigate(direction)
             }

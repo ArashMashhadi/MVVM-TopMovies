@@ -1,7 +1,7 @@
-package com.example.kotlintopmovies2.repository
+package com.example.kotlintopmovies2.data.repository
 
-import com.example.kotlintopmovies2.db.MoviesEntity
-import com.example.kotlintopmovies2.model.detail.ResponseDetail
+import com.example.kotlintopmovies2.data.db.MoviesEntity
+import com.example.kotlintopmovies2.data.model.detail.ResponseDetail
 import retrofit2.Response
 
 interface DetailRepository {

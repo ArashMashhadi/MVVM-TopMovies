@@ -30,7 +30,6 @@
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/_5mdp"
                     android:padding="@dimen/_10mdp"
-                    app:neumorph_shapeType="basin"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -39,16 +38,17 @@
                     app:neumorph_shadowColorLight="@color/shadow_light"
                     app:neumorph_shadowElevation="@dimen/_5mdp"
                     app:neumorph_shapeAppearance="@style/NeumorphismCard"
+                    app:neumorph_shapeType="basin"
                     tools:ignore="missingConstraints">
 
-                <!-- Big Image -->
-                <ImageView
-                    android:id="@+id/posterBigImg"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:alpha="0.3"
-                    android:scaleType="centerCrop"
-                    android:contentDescription="@string/todo" />
+                    <!-- Big Image -->
+                    <ImageView
+                        android:id="@+id/posterBigImg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:alpha="0.3"
+                        android:contentDescription="@string/todo"
+                        android:scaleType="centerCrop" />
 
                 </soup.neumorphism.NeumorphCardView>
 
@@ -57,7 +57,6 @@
                     android:layout_width="@dimen/_210mdp"
                     android:layout_height="@dimen/_300mdp"
                     android:padding="@dimen/_10mdp"
-                    app:neumorph_shapeType="basin"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -66,16 +65,17 @@
                     app:neumorph_shadowColorLight="@color/shadow_light"
                     app:neumorph_shadowElevation="@dimen/_5mdp"
                     app:neumorph_shapeAppearance="@style/NeumorphismCard"
+                    app:neumorph_shapeType="basin"
                     tools:ignore="missingConstraints">
 
-                <!-- Normal Image -->
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/posterNormalImg"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="@dimen/_15mdp"
-                    android:scaleType="centerCrop"
-                    app:shapeAppearanceOverlay="@style/RoundedImageView" />
+                    <!-- Normal Image -->
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/posterNormalImg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/_15mdp"
+                        android:scaleType="centerCrop"
+                        app:shapeAppearanceOverlay="@style/RoundedImageView" />
 
                 </soup.neumorphism.NeumorphCardView>
 
@@ -89,78 +89,79 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <soup.neumorphism.NeumorphCardView
+                    android:id="@+id/back"
                     android:layout_width="@dimen/_64mdp"
                     android:layout_height="@dimen/_64mdp"
-                    android:id="@+id/back"
-                    tools:ignore="missingConstraints"
-                    app:neumorph_shapeType="basin"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:neumorph_shadowColorDark="@color/musicShadow_dark"
                     app:neumorph_shadowColorLight="@color/musicShadow_light"
-                    app:neumorph_shapeAppearance="@style/NeumorphismImageLarg">
-                <ImageView
-                    android:id="@+id/backImg"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/background"
-                    android:padding="@dimen/_8mdp"
-                    android:src="@drawable/ic_back"
-                    app:tint="@color/black"
-                    android:contentDescription="@string/todo" />
+                    app:neumorph_shapeAppearance="@style/NeumorphismImageLarg"
+                    app:neumorph_shapeType="basin"
+                    tools:ignore="missingConstraints">
+
+                    <ImageView
+                        android:id="@+id/backImg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/background"
+                        android:contentDescription="@string/todo"
+                        android:padding="@dimen/_8mdp"
+                        android:src="@drawable/ic_back"
+                        app:tint="@color/black" />
 
                 </soup.neumorphism.NeumorphCardView>
 
                 <soup.neumorphism.NeumorphCardView
+                    android:id="@+id/fav"
                     android:layout_width="@dimen/_64mdp"
                     android:layout_height="@dimen/_64mdp"
-                    android:id="@+id/fav"
-                    tools:ignore="missingConstraints"
-                    app:neumorph_shapeType="basin"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:neumorph_shadowColorDark="@color/musicShadow_dark"
                     app:neumorph_shadowColorLight="@color/musicShadow_light"
-                    app:neumorph_shapeAppearance="@style/NeumorphismImageLarg">
-                <ImageView
-                    android:id="@+id/favImg"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/background"
-                    android:padding="@dimen/_8mdp"
-                    android:contentDescription="@string/todo"
-                    android:src="@drawable/ic_favorite"
-                    app:tint="@color/black" />
+                    app:neumorph_shapeAppearance="@style/NeumorphismImageLarg"
+                    app:neumorph_shapeType="basin"
+                    tools:ignore="missingConstraints">
+
+                    <ImageView
+                        android:id="@+id/favImg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/background"
+                        android:contentDescription="@string/todo"
+                        android:padding="@dimen/_8mdp"
+                        android:src="@drawable/ic_favorite"
+                        app:tint="@color/black" />
                 </soup.neumorphism.NeumorphCardView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- Info Lay -->
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/infoLay"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_200mdp"
-                android:id="@+id/infoLay"
                 android:background="@drawable/shadow"
                 app:layout_constraintBottom_toBottomOf="@+id/posterImagesLay">
 
                 <!-- Title -->
                 <TextView
+                    android:id="@+id/moviesNameTxt"
+                    style="@style/TextViewLightStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/moviesNameTxt"
-                    android:ellipsize="end"
-                    style="@style/TextViewLightStyle"
                     android:layout_marginHorizontal="@dimen/_10mdp"
-                    android:maxLines="2"
-                    android:gravity="center"
                     android:layout_marginBottom="@dimen/_5mdp"
-                    app:layout_constraintBottom_toTopOf="@+id/otherInfoLay"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="2"
                     android:textSize="@dimen/_20font_mdp"
+                    app:layout_constraintBottom_toTopOf="@+id/otherInfoLay"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent" />
 
-
-            <!-- Other Info -->
+                <!-- Other Info -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/otherInfoLay"
                     android:layout_width="match_parent"
@@ -216,47 +217,41 @@
                         app:layout_constraintStart_toEndOf="@+id/moviesTimeTxt"
                         app:layout_constraintTop_toTopOf="parent" />
 
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    <!-- Summary -->
+            <!-- Summary -->
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/summaryLay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/summaryLay"
+                android:layout_marginHorizontal="@dimen/_10mdp"
                 android:layout_marginTop="@dimen/_10mdp"
-                app:layout_constraintTop_toBottomOf="@+id/infoLay"
-                android:layout_marginHorizontal="@dimen/_10mdp">
-
+                app:layout_constraintTop_toBottomOf="@+id/infoLay">
 
                 <!-- Title -->
                 <TextView
+                    android:id="@+id/moviesSummaryTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/moviesSummaryTitle"
                     android:drawablePadding="@dimen/_5mdp"
                     android:fontFamily="sans-serif-light"
+                    android:text="@string/summary"
                     android:textColor="#0065FF"
                     android:textSize="@dimen/_12font_mdp"
                     android:textStyle="bold"
                     app:drawableStartCompat="@drawable/ic_info"
-                    android:text="@string/summary"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:drawableTint="@color/alizarin_crimson"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:drawableTint="@color/alizarin_crimson" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <soup.neumorphism.NeumorphCardView
                     android:id="@+id/txtSummary"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="@dimen/_15mdp"
-                    app:neumorph_shapeType="basin"
                     android:layout_marginTop="@dimen/_20mdp"
+                    android:padding="@dimen/_15mdp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -265,16 +260,18 @@
                     app:neumorph_shadowColorLight="@color/shadow_light"
                     app:neumorph_shadowElevation="@dimen/_5mdp"
                     app:neumorph_shapeAppearance="@style/NeumorphismCard"
+                    app:neumorph_shapeType="basin"
                     tools:ignore="missingConstraints">
-                <!-- Info -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/moviesSummaryInfo"
-                    app:layout_constraintTop_toBottomOf="@+id/moviesSummaryTitle"
-                    android:fontFamily="sans-serif-light"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10font_mdp"/>
+
+                    <!-- Info -->
+                    <TextView
+                        android:id="@+id/moviesSummaryInfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10font_mdp"
+                        app:layout_constraintTop_toBottomOf="@+id/moviesSummaryTitle" />
 
                 </soup.neumorphism.NeumorphCardView>
 
@@ -282,36 +279,35 @@
 
             <!-- Actors -->
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/actorsLay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/actorsLay"
+                android:layout_marginHorizontal="@dimen/_10mdp"
                 android:layout_marginTop="@dimen/_5mdp"
-                app:layout_constraintTop_toBottomOf="@+id/summaryLay"
-                android:layout_marginHorizontal="@dimen/_10mdp">
+                app:layout_constraintTop_toBottomOf="@+id/summaryLay">
 
                 <!-- Title -->
                 <TextView
+                    android:id="@+id/moviesActorsTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/moviesActorsTitle"
                     android:drawablePadding="@dimen/_5mdp"
                     android:fontFamily="sans-serif-light"
+                    android:text="@string/actors"
                     android:textColor="#0065FF"
                     android:textSize="@dimen/_12font_mdp"
                     android:textStyle="bold"
                     app:drawableStartCompat="@drawable/ic_person"
-                    android:text="@string/actors"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:drawableTint="@color/alizarin_crimson"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:drawableTint="@color/alizarin_crimson" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <soup.neumorphism.NeumorphCardView
                     android:id="@+id/txtActor"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="@dimen/_15mdp"
-                    app:neumorph_shapeType="basin"
                     android:layout_marginTop="@dimen/_20mdp"
+                    android:padding="@dimen/_15mdp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -320,17 +316,18 @@
                     app:neumorph_shadowColorLight="@color/shadow_light"
                     app:neumorph_shadowElevation="@dimen/_5mdp"
                     app:neumorph_shapeAppearance="@style/NeumorphismCard"
+                    app:neumorph_shapeType="basin"
                     tools:ignore="missingConstraints">
 
-                <!-- Info -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/moviesActorsInfo"
-                    app:layout_constraintTop_toBottomOf="@+id/moviesActorsTitle"
-                    android:fontFamily="sans-serif-light"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10font_mdp"/>
+                    <!-- Info -->
+                    <TextView
+                        android:id="@+id/moviesActorsInfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10font_mdp"
+                        app:layout_constraintTop_toBottomOf="@+id/moviesActorsTitle" />
 
                 </soup.neumorphism.NeumorphCardView>
 
@@ -338,14 +335,14 @@
 
             <!-- Images -->
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/imagesRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:id="@+id/imagesRecyclerView"
-                app:layout_constraintTop_toBottomOf="@+id/actorsLay"
-                android:layout_marginVertical="@dimen/_10mdp"/>
-
+                android:layout_marginVertical="@dimen/_10mdp"
+                app:layout_constraintTop_toBottomOf="@+id/actorsLay" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.core.widget.NestedScrollView>
 
     <!-- Loading -->
@@ -354,9 +351,9 @@
         android:layout_width="@dimen/_20mdp"
         android:layout_height="@dimen/_20mdp"
         android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

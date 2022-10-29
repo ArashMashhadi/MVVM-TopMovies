@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.favorite.FavoriteFragment1">
 
-
     <!-- List -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/favoriteRecycler"
@@ -21,12 +20,12 @@
 
     <!-- Empty -->
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/emptyItemsLay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
-        android:id="@+id/emptyItemsLay">
+        android:visibility="gone">
 
-        <include layout="@layout/empty_items"/>
+        <include layout="@layout/empty_items" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

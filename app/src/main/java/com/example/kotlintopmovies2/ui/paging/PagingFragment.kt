@@ -13,8 +13,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlintopmovies2.databinding.FragmentPagingBinding
-import com.example.kotlintopmovies2.ui.detail.DetailFragmentDirections
-import com.example.kotlintopmovies2.ui.favorite.FavoriteFragment1Directions
 import com.example.kotlintopmovies2.ui.paging.adapterPaging.LoadMoreAdapter
 import com.example.kotlintopmovies2.ui.paging.adapterPaging.MoviesPagingAdapter
 import com.example.kotlintopmovies2.viewmodel.PagingViewModel
@@ -31,7 +29,6 @@ class PagingFragment : Fragment() {
 
     //ViewModel
     private val viewModel: PagingViewModel by viewModels()
-
 
     //Adapter Paging
     private val moviesPagingAdapter: MoviesPagingAdapter by lazy {

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/_5mdp"
     android:layout_marginHorizontal="@dimen/_5mdp"
+    android:backgroundTint="@color/background"
     app:cardCornerRadius="@dimen/_5mdp"
-    app:cardElevation="@dimen/_3mdp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:backgroundTint="@color/background">
+    app:cardElevation="@dimen/_3mdp">
 
     <soup.neumorphism.NeumorphCardView
         android:id="@+id/dashboardPageCarlay"
@@ -170,9 +170,9 @@
                         android:gravity="center"
                         android:maxLines="1"
                         android:text="@string/moreinfo"
-                        android:textStyle="bold"
                         android:textColor="@color/primary"
                         android:textSize="@dimen/_10font_mdp"
+                        android:textStyle="bold"
                         app:drawableEndCompat="@drawable/ic_chevron_right"
                         app:drawableTint="@color/alizarin_crimson"
                         app:layout_constraintStart_toStartOf="parent"
@@ -182,10 +182,8 @@
 
             </soup.neumorphism.NeumorphCardView>
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </soup.neumorphism.NeumorphCardView>
-
 
 </androidx.cardview.widget.CardView>

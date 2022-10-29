@@ -1,6 +1,6 @@
 package com.example.kotlintopmovies2.di
 
-import com.example.kotlintopmovies2.api.ApiServices
+import com.example.kotlintopmovies2.data.api.ApiServices
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -27,25 +27,25 @@ object ModuleRetrofit {
 
     @Provides
     @Singleton
-    fun providegson(): Gson = GsonBuilder().setLenient().create()
+    fun provideGson(): Gson = GsonBuilder().setLenient().create()
 
     @Provides
     @Named(BODY)
-    fun provideInterceptorBody() = HttpLoggingInterceptor().apply {
+    fun provideInterceptorBody(): HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }
 
     @Provides
     @Named(HEADERS)
-    fun provideInterceptorHeader() = HttpLoggingInterceptor().apply {
+    fun provideInterceptorHeader(): HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.HEADERS
     }
 
     @Provides
     fun provideClient(
         @Named(BODY) body: HttpLoggingInterceptor,
-        @Named(HEADERS) header: HttpLoggingInterceptor
-    ):OkHttpClient = OkHttpClient.Builder()
+        @Named(HEADERS) header: HttpLoggingInterceptor,
+    ): OkHttpClient = OkHttpClient.Builder()
         .connectTimeout(TIME_OUT, TimeUnit.SECONDS)
         .readTimeout(TIME_OUT, TimeUnit.SECONDS)
         .writeTimeout(TIME_OUT, TimeUnit.SECONDS)
@@ -56,12 +56,15 @@ object ModuleRetrofit {
 
     @Provides
     @Singleton
-    fun provideRetrofit(gson: Gson, client: OkHttpClient): ApiServices = Retrofit.Builder()
+    fun provideRetrofit(gson: Gson, client: OkHttpClient): Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create(gson))
         .client(client)
         .build()
-        .create(ApiServices::class.java)
+
+    @Provides
+    @Singleton
+    fun provideApiServices(retrofit: Retrofit): ApiServices = retrofit.create(ApiServices::class.java)
 
 
 }

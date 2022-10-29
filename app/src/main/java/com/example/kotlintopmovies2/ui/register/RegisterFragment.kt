@@ -1,6 +1,5 @@
 package com.example.kotlintopmovies2.ui.register
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Patterns
 import android.view.LayoutInflater
@@ -10,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.coroutineScope
 import com.example.kotlintopmovies2.databinding.FragmentRegisterBinding
-import com.example.kotlintopmovies2.model.register.BodyRegister
+import com.example.kotlintopmovies2.data.model.register.BodyRegister
 import com.example.kotlintopmovies2.utils.StoreUserData
 import com.example.kotlintopmovies2.utils.showInvisible
 import com.example.kotlintopmovies2.viewmodel.RegisterViewModel
@@ -90,7 +89,6 @@ class RegisterFragment : Fragment() {
                         submitLoading.showInvisible(false)
                         submitBtn.showInvisible(true)
                     }
-
                 }
                 //Register
                 viewModel.registerUser.observe(viewLifecycleOwner) { response ->
@@ -98,10 +96,7 @@ class RegisterFragment : Fragment() {
                     lifecycle.coroutineScope.launchWhenCreated {
                         userDataStor.saveUserToken(response.name.toString())
                     }
-
-
                 }
-
             }
         }
     }

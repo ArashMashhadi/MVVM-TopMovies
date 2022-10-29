@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import com.example.kotlintopmovies2.R
 import com.example.kotlintopmovies2.databinding.FragmentDetailBinding
-import com.example.kotlintopmovies2.db.MoviesEntity
+import com.example.kotlintopmovies2.data.db.MoviesEntity
 import com.example.kotlintopmovies2.utils.initRecycler
 import com.example.kotlintopmovies2.utils.showInvisible
 import com.example.kotlintopmovies2.viewmodel.DetailViewModel
@@ -27,8 +27,6 @@ import javax.inject.Inject
 class DetailFragment : Fragment() {
 
     private lateinit var binding : FragmentDetailBinding
-
-
     private val imagesAdapter: ImagesAdapter by lazy { ImagesAdapter() }
 
     @Inject
@@ -48,6 +46,7 @@ class DetailFragment : Fragment() {
             viewModel.loadDetailMovies(movieId)
         }
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentDetailBinding.inflate(inflater,container,false)
@@ -90,8 +89,8 @@ class DetailFragment : Fragment() {
                     entity.year = response.year.toString()
                     viewModel.favoriteMovies(movieId, entity)
                 }
-
             }
+
             //Loading
             viewModel.loading.observe(viewLifecycleOwner) {
                 if (it) {
@@ -114,7 +113,6 @@ class DetailFragment : Fragment() {
                             R.color.black
                         )
                     )
-
                 }
             }
 
@@ -129,10 +127,8 @@ class DetailFragment : Fragment() {
                             R.color.black
                         )
                     )
-
                 }
             }
-
 
             //Back
             backImg.setOnClickListener {
@@ -140,5 +136,4 @@ class DetailFragment : Fragment() {
             }
         }
     }
-
 }

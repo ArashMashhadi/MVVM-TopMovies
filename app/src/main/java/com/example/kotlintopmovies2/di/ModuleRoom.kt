@@ -2,8 +2,8 @@ package com.example.kotlintopmovies2.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.kotlintopmovies2.db.MoviesDataBase
-import com.example.kotlintopmovies2.db.MoviesEntity
+import com.example.kotlintopmovies2.data.db.MoviesDataBase
+import com.example.kotlintopmovies2.data.db.MoviesEntity
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

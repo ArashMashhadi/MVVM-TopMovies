@@ -1,10 +1,10 @@
-package com.example.kotlintopmovies2.api
+package com.example.kotlintopmovies2.data.api
 
-import com.example.kotlintopmovies2.model.detail.ResponseDetail
-import com.example.kotlintopmovies2.model.home.ResponseGenresList
-import com.example.kotlintopmovies2.model.home.ResponseMoviesList
-import com.example.kotlintopmovies2.model.register.BodyRegister
-import com.example.kotlintopmovies2.model.register.ResponseRegister
+import com.example.kotlintopmovies2.data.model.detail.ResponseDetail
+import com.example.kotlintopmovies2.data.model.home.ResponseGenresList
+import com.example.kotlintopmovies2.data.model.home.ResponseMoviesList
+import com.example.kotlintopmovies2.data.model.register.BodyRegister
+import com.example.kotlintopmovies2.data.model.register.ResponseRegister
 import retrofit2.Response
 import retrofit2.http.*
 

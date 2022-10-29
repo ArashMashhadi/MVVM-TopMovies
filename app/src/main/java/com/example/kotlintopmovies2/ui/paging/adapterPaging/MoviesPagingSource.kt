@@ -2,11 +2,11 @@ package com.example.kotlintopmovies2.ui.paging.adapterPaging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.kotlintopmovies2.model.home.ResponseMoviesList
-import com.example.kotlintopmovies2.repository.PagingRepositoryImpl
+import com.example.kotlintopmovies2.data.model.home.ResponseMoviesList
+import com.example.kotlintopmovies2.data.repository.PagingRepository
 import javax.inject.Inject
 
-class MoviesPagingSource @Inject constructor(private val repository: PagingRepositoryImpl) :
+class MoviesPagingSource @Inject constructor(private val repository: PagingRepository) :
     PagingSource<Int , ResponseMoviesList.Data> (){
 
     override fun getRefreshKey(state: PagingState<Int, ResponseMoviesList.Data>): Int? {

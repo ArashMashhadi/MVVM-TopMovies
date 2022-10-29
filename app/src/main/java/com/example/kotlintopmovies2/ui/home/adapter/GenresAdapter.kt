@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlintopmovies2.databinding.ItemHomeGenreListBinding
-import com.example.kotlintopmovies2.model.home.ResponseGenresList
+import com.example.kotlintopmovies2.data.model.home.ResponseGenresList
 
 class GenresAdapter : RecyclerView.Adapter<GenresAdapter.MyViewHolder>(){
 

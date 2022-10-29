@@ -56,7 +56,6 @@
         <item name="neumorph_cornerSize">@dimen/_10mdp</item>
     </style>
 
-    <!--Music player-->
     <style name="NeumorphismImageSmall">
         <item name="neumorph_cornerFamily">rounded</item>
         <item name="neumorph_cornerSize">@dimen/_21mdp</item>

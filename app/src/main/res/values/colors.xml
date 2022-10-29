@@ -18,7 +18,6 @@
     <color name="philippineSilverAlpha">#94B3B3B3</color>
     <color name="gunmetal">#2C2E43</color>
 
-
     <!--Dashboard colors-->
     <color name="primary">#2D7DF6</color>
     <color name="background">#E4EBF5</color>
@@ -29,7 +28,6 @@
     <color name="shadow_light">#F8F8FE</color>
     <color name="icon_dark">#212121</color>
 
-    <!--Music colors-->
     <color name="musicPrimary">#A3B5BF</color>
     <color name="musicBackground">#EBEBEB</color>
     <color name="musicPrimary_text">#676767</color>
@@ -37,7 +35,6 @@
     <color name="musicShadow_dark">#C5C5C5</color>
     <color name="musicShadow_light">#FFFFFF</color>
 
-    <!--Movie dark colors-->
     <color name="outer_space">#32383D</color>
     <color name="shark">#191B1F</color>
     <color name="alizarin_crimson">#DE233B</color>

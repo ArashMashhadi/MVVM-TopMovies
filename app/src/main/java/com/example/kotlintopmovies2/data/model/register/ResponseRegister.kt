@@ -1,4 +1,4 @@
-package com.example.kotlintopmovies2.model.register
+package com.example.kotlintopmovies2.data.model.register
 
 
 import com.google.gson.annotations.SerializedName

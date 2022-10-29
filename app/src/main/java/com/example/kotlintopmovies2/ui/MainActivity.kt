@@ -1,17 +1,15 @@
 package com.example.kotlintopmovies2.ui
 
-
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
 import com.example.kotlintopmovies2.R
 import com.example.kotlintopmovies2.databinding.ActivityMainBinding
-
 import dagger.hilt.android.AndroidEntryPoint
-
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(),View.OnClickListener {
@@ -20,7 +18,9 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
     private lateinit var binding: ActivityMainBinding
 
     //Navigation
+    private lateinit var navHostFragment: NavHostFragment
     private lateinit var navController: NavController
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,9 +35,21 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
             favorit.setOnClickListener(this@MainActivity)
             paging.setOnClickListener(this@MainActivity)
 
-            //Navigation
-            navController = findNavController(R.id.navHost)
+            initNavigation()
+
+        }
+    }
+
+    //Init Navigation
+    private fun initNavigation(){
+        binding.apply {
+            navHostFragment =
+                supportFragmentManager.findFragmentById(R.id.navHost) as NavHostFragment
+            navController = navHostFragment.navController
+            //appBarConfiguration = AppBarConfiguration(setOf(R.id.splashFragment))
+            //NavigationUI.setupActionBarWithNavController(this@MainActivity, navController)
             //bottomNavigationView.setupWithNavController(navController)
+            //NavigationUI.setupWithNavController(navigationView, navController)
 
             //Show Bottom Navigation
             navController.addOnDestinationChangedListener { _, destination, _ ->
@@ -49,7 +61,6 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
                     bottomNavigationView.visibility = View.VISIBLE
                 }
             }
-
         }
     }
 
@@ -58,72 +69,29 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
         return navController.navigateUp() || super.onNavigateUp()
     }
 
-
-    override fun onClick(v: View?) {
+    override fun onClick(v: View) {
         binding.apply {
-            when (v?.id) {
+            when (v.id) {
                 R.id.home -> {
                     bottomNav(R.id.homeFragment,R.color.crayola,R.color.primary,R.color.primary,R.color.primary,2,0,0,0)
-/*                    homeImg.setColorFilter(ContextCompat.getColor(applicationContext, R.color.crayola), android.graphics.PorterDuff.Mode.SRC_IN);
-                    searchImg.setColorFilter(ContextCompat.getColor(applicationContext, R.color.primary), android.graphics.PorterDuff.Mode.SRC_IN);
-                    favoritImg.setColorFilter(ContextCompat.getColor(applicationContext, R.color.primary), android.graphics.PorterDuff.Mode.SRC_IN);
-                    pagingImg.setColorFilter(ContextCompat.getColor(applicationContext, R.color.primary), android.graphics.PorterDuff.Mode.SRC_IN);
-                    navController.navigateUp()
-                    navController.navigate(R.id.homeFragment);
-                    home.setShapeType(2)
-                    search.setShapeType(0)
-                    favorit.setShapeType(0)
-                    paging.setShapeType(0)*/
                 }
                 R.id.search -> {
                     bottomNav(R.id.searchFragment,R.color.primary,R.color.crayola,R.color.primary,R.color.primary,0,2,0,0)
-/*                    homeImg.setColorFilter(ContextCompat.getColor(applicationContext, R.color.primary), android.graphics.PorterDuff.Mode.SRC_IN);
-                    searchImg.setColorFilter(ContextCompat.getColor(applicationContext, R.color.crayola), android.graphics.PorterDuff.Mode.SRC_IN);
-                    favoritImg.setColorFilter(ContextCompat.getColor(applicationContext, R.color.primary), android.graphics.PorterDuff.Mode.SRC_IN);
-                    pagingImg.setColorFilter(ContextCompat.getColor(applicationContext, R.color.primary), android.graphics.PorterDuff.Mode.SRC_IN);
-                    navController.navigateUp()
-                    navController.navigate(R.id.searchFragment);
-                    home.setShapeType(0)
-                    search.setShapeType(2)
-                    favorit.setShapeType(0)
-                    paging.setShapeType(0)*/
                 }
                 R.id.favorit -> {
                     bottomNav(R.id.favoriteFragment,R.color.primary,R.color.primary,R.color.crayola,R.color.primary,0,0,2,0)
-/*                    homeImg.setColorFilter(ContextCompat.getColor(applicationContext, R.color.primary), android.graphics.PorterDuff.Mode.SRC_IN);
-                    searchImg.setColorFilter(ContextCompat.getColor(applicationContext, R.color.primary), android.graphics.PorterDuff.Mode.SRC_IN);
-                    pagingImg.setColorFilter(ContextCompat.getColor(applicationContext, R.color.primary), android.graphics.PorterDuff.Mode.SRC_IN);
-                    favoritImg.setColorFilter(ContextCompat.getColor(applicationContext, R.color.crayola), android.graphics.PorterDuff.Mode.SRC_IN);
-                    navController.navigateUp()
-                    navController.navigate(R.id.favoriteFragment);
-                    home.setShapeType(0)
-                    search.setShapeType(0)
-                    favorit.setShapeType(2)
-                    paging.setShapeType(0)*/
                 }
                 R.id.paging -> {
                     bottomNav(R.id.pagingFragment,R.color.primary,R.color.primary,R.color.primary,R.color.crayola,0,0,0,2)
-/*                    homeImg.setColorFilter(ContextCompat.getColor(applicationContext, R.color.primary), android.graphics.PorterDuff.Mode.SRC_IN);
-                    searchImg.setColorFilter(ContextCompat.getColor(applicationContext, R.color.primary), android.graphics.PorterDuff.Mode.SRC_IN);
-                    favoritImg.setColorFilter(ContextCompat.getColor(applicationContext, R.color.primary), android.graphics.PorterDuff.Mode.SRC_IN);
-                    pagingImg.setColorFilter(ContextCompat.getColor(applicationContext, R.color.crayola), android.graphics.PorterDuff.Mode.SRC_IN);
-                    navController.navigateUp()
-                    navController.navigate(R.id.pagingFragment);
-                    home.setShapeType(0)
-                    search.setShapeType(0)
-                    favorit.setShapeType(0)
-                    paging.setShapeType(2)*/
-
                 }
             }
         }
     }
 
-    fun bottomNav(fragment:Int,colorHomeImg: Int,colorSearchImg: Int,colorFavoritImg: Int,colorPagingImg: Int,intHome: Int,intSearch: Int,intFavorit: Int,intPaging: Int ) {
+    private fun bottomNav(fragment:Int, colorHomeImg: Int, colorSearchImg: Int, colorFavoritImg: Int, colorPagingImg: Int, intHome: Int, intSearch: Int, intFavorit: Int, intPaging: Int ) {
         binding.apply {
             homeImg.setColorFilter(
-                ContextCompat.getColor(applicationContext, colorHomeImg),
-                android.graphics.PorterDuff.Mode.SRC_IN
+                ContextCompat.getColor(applicationContext, colorHomeImg), android.graphics.PorterDuff.Mode.SRC_IN
             );
             searchImg.setColorFilter(
                 ContextCompat.getColor(applicationContext, colorSearchImg),

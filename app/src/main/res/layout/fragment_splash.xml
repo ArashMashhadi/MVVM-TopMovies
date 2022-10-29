@@ -8,9 +8,7 @@
 
     <!-- Ax -->
     <!-- Logo -->
-
     <!-- App name -->
-
     <soup.neumorphism.NeumorphCardView
         android:id="@+id/moviesPosterCard"
         android:layout_width="wrap_content"
@@ -48,16 +46,16 @@
         android:id="@+id/splash"
         android:layout_width="@dimen/_150mdp"
         android:layout_height="@dimen/_150mdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_margin="@dimen/_10mdp"
         android:padding="@dimen/_15mdp"
-        app:neumorph_shapeType="basin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:neumorph_shadowColorDark="@color/musicShadow_dark"
         app:neumorph_shadowColorLight="@color/musicShadow_light"
         app:neumorph_shapeAppearance="@style/NeumorphismImageCard"
+        app:neumorph_shapeType="basin"
         tools:layout_editor_absoluteY="216dp">
 
         <ImageView
@@ -83,8 +81,8 @@
         app:neumorph_shadowColorDark="@color/shadow_dark"
         app:neumorph_shadowColorLight="@color/shadow_light"
         app:neumorph_shadowElevation="@dimen/_5mdp"
-        app:neumorph_shapeType="basin"
         app:neumorph_shapeAppearance="@style/NeumorphismCard"
+        app:neumorph_shapeType="basin"
         tools:ignore="missingConstraints">
 
         <TextView
@@ -97,6 +95,5 @@
             android:textStyle="bold"
             app:layout_constraintVertical_bias="0.241" />
     </soup.neumorphism.NeumorphCardView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

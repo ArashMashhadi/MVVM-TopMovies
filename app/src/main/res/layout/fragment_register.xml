@@ -18,27 +18,28 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <!-- Name -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nameInput"
         style="@style/CustomFilledBpx"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_50mdp"
         android:layout_marginHorizontal="@dimen/_30mdp"
+        android:layout_marginTop="@dimen/_50mdp"
         android:hint="@string/name"
-        app:startIconDrawable="@drawable/ic_person"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userAvatarImg">
+        app:layout_constraintTop_toBottomOf="@+id/userAvatarImg"
+        app:startIconDrawable="@drawable/ic_person">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/nameEdt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/_14font_mdp"
-        style="@style/TextViewLightStyle" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nameEdt"
+            style="@style/TextViewLightStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_14font_mdp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -48,8 +49,8 @@
         style="@style/CustomFilledBpx"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20mdp"
         android:layout_marginHorizontal="@dimen/_30mdp"
+        android:layout_marginTop="@dimen/_20mdp"
         android:hint="@string/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -72,17 +73,17 @@
         style="@style/CustomFilledBpx"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20mdp"
         android:layout_marginHorizontal="@dimen/_30mdp"
+        android:layout_marginTop="@dimen/_20mdp"
         android:hint="@string/password"
-        app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/philippineSilver"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailInput"
         app:layout_constraintVertical_bias="0.0"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/philippineSilver"
         app:startIconDrawable="@drawable/ic_lock">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -107,7 +108,7 @@
         app:cornerRadius="@dimen/_6mdp"
         app:layout_constraintEnd_toEndOf="@+id/passwordInput"
         app:layout_constraintStart_toStartOf="@+id/passwordInput"
-        app:layout_constraintTop_toBottomOf="@+id/passwordInput"/>
+        app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
 
     <!-- Loading -->
     <ProgressBar
@@ -116,9 +117,8 @@
         android:layout_height="@dimen/_20mdp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/submitBtn"
-        app:layout_constraintTop_toTopOf="@+id/submitBtn"
+        app:layout_constraintEnd_toEndOf="@+id/submitBtn"
         app:layout_constraintStart_toStartOf="@+id/submitBtn"
-        app:layout_constraintEnd_toEndOf="@+id/submitBtn"/>
-
+        app:layout_constraintTop_toTopOf="@+id/submitBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

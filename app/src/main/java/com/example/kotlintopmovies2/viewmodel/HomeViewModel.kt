@@ -4,23 +4,21 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.kotlintopmovies2.model.home.ResponseGenresList
-import com.example.kotlintopmovies2.model.home.ResponseMoviesList
-import com.example.kotlintopmovies2.repository.HomeRepositoryImpl
+import com.example.kotlintopmovies2.data.model.home.ResponseGenresList
+import com.example.kotlintopmovies2.data.model.home.ResponseMoviesList
+import com.example.kotlintopmovies2.data.repository.HomeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(private val repository: HomeRepositoryImpl) : ViewModel(){
+class HomeViewModel @Inject constructor(private val repository: HomeRepository) : ViewModel(){
 
     val topMoviesList = MutableLiveData<ResponseMoviesList>()
     val genresList = MutableLiveData<ResponseGenresList>()
     val lastMoviesList = MutableLiveData<ResponseMoviesList>()
     val loading = MutableLiveData<Boolean>()
-
-
 
     fun loadTopMoviesList (id : Int) = viewModelScope.launch(Dispatchers.IO) {
         Log.i("aaa", "home ${Thread.currentThread().name}")

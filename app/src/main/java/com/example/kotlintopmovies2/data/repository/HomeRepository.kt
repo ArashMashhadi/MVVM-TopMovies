@@ -1,7 +1,7 @@
-package com.example.kotlintopmovies2.repository
+package com.example.kotlintopmovies2.data.repository
 
-import com.example.kotlintopmovies2.model.home.ResponseGenresList
-import com.example.kotlintopmovies2.model.home.ResponseMoviesList
+import com.example.kotlintopmovies2.data.model.home.ResponseGenresList
+import com.example.kotlintopmovies2.data.model.home.ResponseMoviesList
 import retrofit2.Response
 
 interface HomeRepository {

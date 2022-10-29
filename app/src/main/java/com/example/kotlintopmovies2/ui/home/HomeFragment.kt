@@ -13,11 +13,11 @@ import com.example.kotlintopmovies2.databinding.FragmentHomeBinding
 import com.example.kotlintopmovies2.ui.home.adapter.GenresAdapter
 import com.example.kotlintopmovies2.ui.home.adapter.LastMoviesAdapter
 import com.example.kotlintopmovies2.ui.home.adapter.TopMoviesAdapter
+import com.example.kotlintopmovies2.ui.home.adapter.TopMoviesListAdapter
 import com.example.kotlintopmovies2.utils.initRecycler
 import com.example.kotlintopmovies2.utils.showInvisible
 import com.example.kotlintopmovies2.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
-
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -26,10 +26,13 @@ class HomeFragment : Fragment() {
     lateinit var binding: FragmentHomeBinding
 
     //Adapter
+    //ListAdapter ********
+    private val topMoviesListAdapter: TopMoviesListAdapter by lazy { TopMoviesListAdapter() }
+
+    //RecyclerViewAdapter
     private val topMoviesAdapter: TopMoviesAdapter by lazy { TopMoviesAdapter(requireContext()) }
     private val genresAdapter: GenresAdapter by lazy { GenresAdapter() }
     private val lastMoviesAdapter: LastMoviesAdapter by lazy { LastMoviesAdapter(requireContext()) }
-
 
     //ViewModel
     private val viewModel: HomeViewModel by viewModels()
@@ -46,7 +49,7 @@ class HomeFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?,
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
@@ -104,7 +107,6 @@ class HomeFragment : Fragment() {
                 findNavController().navigate(direction)
             }
 
-
             //Loading
             viewModel.loading.observe(viewLifecycleOwner) {
                 if (it) {
@@ -113,11 +115,8 @@ class HomeFragment : Fragment() {
                 } else {
                     moviesLoading.showInvisible(false)
                     moviesScrollLay.showInvisible(true)
-
                 }
             }
-
-
         }
     }
 }

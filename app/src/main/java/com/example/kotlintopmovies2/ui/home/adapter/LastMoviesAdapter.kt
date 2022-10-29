@@ -6,9 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.kotlintopmovies2.databinding.ItemHomeMoviesLastBinding
 import com.example.kotlintopmovies2.databinding.ItemPagingMoviesLastBinding
-import com.example.kotlintopmovies2.model.home.ResponseMoviesList
+import com.example.kotlintopmovies2.data.model.home.ResponseMoviesList
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 

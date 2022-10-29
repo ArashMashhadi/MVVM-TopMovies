@@ -1,4 +1,4 @@
-package com.example.kotlintopmovies2.db
+package com.example.kotlintopmovies2.data.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

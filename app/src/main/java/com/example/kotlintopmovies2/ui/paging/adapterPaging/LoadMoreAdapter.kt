@@ -26,7 +26,6 @@ class LoadMoreAdapter(private val retry: () -> Unit) : LoadStateAdapter<LoadMore
 
         init {
             binding.loadMoreRetry.setOnClickListener { retry() }
-
         }
 
         fun binData(state: LoadState) {
@@ -35,7 +34,6 @@ class LoadMoreAdapter(private val retry: () -> Unit) : LoadStateAdapter<LoadMore
                 loadMoreTxt.isVisible = state is LoadState.Error
                 loadMoreRetry.isVisible = state is LoadState.Error
             }
-
         }
     }
 }

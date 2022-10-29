@@ -9,8 +9,11 @@
         <entry key="..\:/Users/Arash/AndroidStudioProjects/KotlinTopMovies2/app/src/main/res/drawable-v24/ic_chevron_right.xml" value="0.1" />
         <entry key="..\:/Users/Arash/AndroidStudioProjects/KotlinTopMovies2/app/src/main/res/drawable-v24/ic_favorite.xml" value="0.1" />
         <entry key="..\:/Users/Arash/AndroidStudioProjects/KotlinTopMovies2/app/src/main/res/drawable-v24/ic_info.xml" value="0.1" />
+        <entry key="..\:/Users/Arash/AndroidStudioProjects/KotlinTopMovies2/app/src/main/res/drawable-v24/ic_lock.xml" value="0.1" />
+        <entry key="..\:/Users/Arash/AndroidStudioProjects/KotlinTopMovies2/app/src/main/res/drawable-v24/shadow_center.xml" value="0.1" />
         <entry key="..\:/Users/Arash/AndroidStudioProjects/KotlinTopMovies2/app/src/main/res/drawable-v24/shadow_left.xml" value="0.1" />
         <entry key="..\:/Users/Arash/AndroidStudioProjects/KotlinTopMovies2/app/src/main/res/drawable-v24/shadow_light.xml" value="0.1" />
+        <entry key="..\:/Users/Arash/AndroidStudioProjects/KotlinTopMovies2/app/src/main/res/drawable-v24/shadow_right.xml" value="0.1" />
         <entry key="..\:/Users/Arash/AndroidStudioProjects/KotlinTopMovies2/app/src/main/res/drawable-v24/shadow_top.xml" value="0.1" />
         <entry key="..\:/Users/Arash/AndroidStudioProjects/KotlinTopMovies2/app/src/main/res/drawable/bg_circle_dark.xml" value="0.1" />
         <entry key="..\:/Users/Arash/AndroidStudioProjects/KotlinTopMovies2/app/src/main/res/drawable/bg_rounded_dark.xml" value="0.1" />
@@ -23,7 +26,7 @@
         <entry key="..\:/Users/Arash/AndroidStudioProjects/KotlinTopMovies2/app/src/main/res/layout/fragment_favorite.xml" value="0.15830800405268491" />
         <entry key="..\:/Users/Arash/AndroidStudioProjects/KotlinTopMovies2/app/src/main/res/layout/fragment_home.xml" value="0.15628166160081053" />
         <entry key="..\:/Users/Arash/AndroidStudioProjects/KotlinTopMovies2/app/src/main/res/layout/fragment_paging.xml" value="0.1" />
-        <entry key="..\:/Users/Arash/AndroidStudioProjects/KotlinTopMovies2/app/src/main/res/layout/fragment_register.xml" value="0.1" />
+        <entry key="..\:/Users/Arash/AndroidStudioProjects/KotlinTopMovies2/app/src/main/res/layout/fragment_register.xml" value="0.25" />
         <entry key="..\:/Users/Arash/AndroidStudioProjects/KotlinTopMovies2/app/src/main/res/layout/fragment_search.xml" value="0.11684782608695653" />
         <entry key="..\:/Users/Arash/AndroidStudioProjects/KotlinTopMovies2/app/src/main/res/layout/fragment_splash.xml" value="0.11684782608695653" />
         <entry key="..\:/Users/Arash/AndroidStudioProjects/KotlinTopMovies2/app/src/main/res/layout/item_detail_images.xml" value="0.11684782608695653" />

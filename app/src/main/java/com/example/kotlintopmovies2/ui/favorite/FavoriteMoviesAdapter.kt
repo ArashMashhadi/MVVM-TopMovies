@@ -6,11 +6,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import com.bumptech.glide.Glide
-import com.example.kotlintopmovies2.databinding.ItemHomeMoviesLastBinding
 import com.example.kotlintopmovies2.databinding.ItemPagingMoviesLastBinding
-import com.example.kotlintopmovies2.db.MoviesEntity
+import com.example.kotlintopmovies2.data.db.MoviesEntity
 import dagger.hilt.android.qualifiers.ApplicationContext
 
 import javax.inject.Inject
@@ -72,7 +70,6 @@ class FavoriteMoviesAdapter @Inject constructor(@ApplicationContext private val 
         diffUtils.dispatchUpdatesTo(this)
     }
 
-
     class MoviesDiffUtils(private val oldItem : List<MoviesEntity> , private val newItem : List<MoviesEntity>):DiffUtil.Callback(){
         override fun getOldListSize(): Int {
             return oldItem.size
@@ -89,6 +86,5 @@ class FavoriteMoviesAdapter @Inject constructor(@ApplicationContext private val 
         override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
             return oldItem[oldItemPosition] === newItem[newItemPosition]
         }
-
     }
 }

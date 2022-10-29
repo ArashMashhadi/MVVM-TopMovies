@@ -1,15 +1,13 @@
-package com.example.kotlintopmovies2.repository
+package com.example.kotlintopmovies2.data.repository
 
-import com.example.kotlintopmovies2.api.ApiServices
-import com.example.kotlintopmovies2.model.home.ResponseGenresList
-import com.example.kotlintopmovies2.model.home.ResponseMoviesList
+import com.example.kotlintopmovies2.data.api.ApiServices
+import com.example.kotlintopmovies2.data.model.home.ResponseGenresList
+import com.example.kotlintopmovies2.data.model.home.ResponseMoviesList
 import retrofit2.Response
 import javax.inject.Inject
 
 class HomeRepositoryImpl @Inject constructor(private val api : ApiServices) : HomeRepository {
-    /*    suspend fun topMoviesList (id : Int) = api.moviesTopList(id)
-    suspend fun genresList () = api.genresList()
-    suspend fun lastMoviesList () = api.moviesLastList()*/
+
     override suspend fun topMoviesList(id: Int): Response<ResponseMoviesList> {
         return api.moviesTopList(id)
     }
