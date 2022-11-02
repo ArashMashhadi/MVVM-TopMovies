@@ -19,7 +19,6 @@ class FavoriteViewModel @Inject constructor(private val repository : FavoriteRep
 
     fun loadFavoriteList() = viewModelScope.launch(Dispatchers.IO) {
         Log.i("aaa", "favorit ${Thread.currentThread().name}")
-
         val list = repository.allFavoriteList()
         if(list.isNotEmpty()){
                 favoriteList.postValue(list)

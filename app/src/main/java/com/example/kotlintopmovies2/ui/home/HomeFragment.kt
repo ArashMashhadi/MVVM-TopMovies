@@ -23,16 +23,17 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     //Binding
-    lateinit var binding: FragmentHomeBinding
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
 
     //Adapter
     //ListAdapter ********
     private val topMoviesListAdapter: TopMoviesListAdapter by lazy { TopMoviesListAdapter() }
 
     //RecyclerViewAdapter
-    private val topMoviesAdapter: TopMoviesAdapter by lazy { TopMoviesAdapter(requireContext()) }
+    private val topMoviesAdapter: TopMoviesAdapter by lazy { TopMoviesAdapter() }
     private val genresAdapter: GenresAdapter by lazy { GenresAdapter() }
-    private val lastMoviesAdapter: LastMoviesAdapter by lazy { LastMoviesAdapter(requireContext()) }
+    private val lastMoviesAdapter: LastMoviesAdapter by lazy { LastMoviesAdapter() }
 
     //ViewModel
     private val viewModel: HomeViewModel by viewModels()
@@ -51,36 +52,44 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?,
     ): View {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //InitView
-        binding.apply {
+        //Get Top Movies
+        getTopMovies()
+        //Get Genres
+        getGenresMovies()
+        //Get Last Movies
+        getLastMovies()
+        //Click
+        clickListenerAdapter()
+        //Loading
+        loading()
+    }
 
-            //Get Top Movies
+    private fun getTopMovies() {
+        binding.apply {
             viewModel.topMoviesList.observe(viewLifecycleOwner) {
                 topMoviesAdapter.differ.submitList(it.data)
 
                 //RecyclerView Top Movies
                 topMoviesRecycler.initRecycler(
-                    LinearLayoutManager(
-                        requireContext(),
-                        LinearLayoutManager.HORIZONTAL,
-                        false
-                    ), topMoviesAdapter
-                )
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false),
+                    topMoviesAdapter)
 
                 //Indicator
                 pagerHelper.attachToRecyclerView(topMoviesRecycler)
                 topMoviesIndicator.attachToRecyclerView(topMoviesRecycler, pagerHelper)
-
             }
+        }
+    }
 
-            //Get Genres
+    private fun getGenresMovies() {
+        binding.apply {
             viewModel.genresList.observe(viewLifecycleOwner) {
                 genresAdapter.differ.submitList(it)
 
@@ -90,9 +99,12 @@ class HomeFragment : Fragment() {
                     genresAdapter
                 )
             }
-            //Get Last Movies
+        }
+    }
+
+    private fun getLastMovies() {
+        binding.apply {
             viewModel.lastMoviesList.observe(viewLifecycleOwner) {
-                //lastMoviesAdapter.setDataDiffer(it.data)
                 lastMoviesAdapter.setDataDiffer(it.data)
 
                 //RecyclerView Last Movies
@@ -100,14 +112,18 @@ class HomeFragment : Fragment() {
                     LinearLayoutManager(requireContext()), lastMoviesAdapter
                 )
             }
+        }
+    }
 
-            //Click
-            lastMoviesAdapter.setOnItemClickListener {
-                val direction = HomeFragmentDirections.actionToDetail(it.id!!.toInt())
-                findNavController().navigate(direction)
-            }
+    private fun clickListenerAdapter() {
+        lastMoviesAdapter.setOnItemClickListener {
+            val direction = HomeFragmentDirections.actionToDetail(it.id!!.toInt())
+            findNavController().navigate(direction)
+        }
+    }
 
-            //Loading
+    private fun loading() {
+        binding.apply {
             viewModel.loading.observe(viewLifecycleOwner) {
                 if (it) {
                     moviesLoading.showInvisible(true)
@@ -118,5 +134,10 @@ class HomeFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

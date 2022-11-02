@@ -7,15 +7,14 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.kotlintopmovies2.databinding.ItemPagingMoviesLastBinding
 import com.example.kotlintopmovies2.data.model.home.ResponseMoviesList
-import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
+import com.example.kotlintopmovies2.databinding.ItemPagingMoviesLastBinding
 
-class MoviesPagingAdapter @Inject constructor(@ApplicationContext private val context: Context) :
+class MoviesPagingAdapter :
     PagingDataAdapter<ResponseMoviesList.Data, MoviesPagingAdapter.MyViewHolder>(differCallBack) {
 
     private lateinit var binding: ItemPagingMoviesLastBinding
+    private lateinit var context: Context
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -23,6 +22,7 @@ class MoviesPagingAdapter @Inject constructor(@ApplicationContext private val co
     ): MoviesPagingAdapter.MyViewHolder {
         binding =
             ItemPagingMoviesLastBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        context = parent.context
         return MyViewHolder()
     }
 

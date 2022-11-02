@@ -20,11 +20,12 @@ import javax.inject.Inject
 class RegisterFragment : Fragment() {
 
     //Binding
-    lateinit var binding: FragmentRegisterBinding
+    private var _binding: FragmentRegisterBinding? = null
+    private val binding get() = _binding!!
 
-    //DataStor
+    //DataStore
     @Inject
-    lateinit var userDataStor: StoreUserData
+    lateinit var userDataStore: StoreUserData
 
     //BodyRegister
     @Inject
@@ -34,18 +35,21 @@ class RegisterFragment : Fragment() {
     private val viewModel: RegisterViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?,
     ): View {
-        binding = FragmentRegisterBinding.inflate(inflater, container, false)
+        _binding = FragmentRegisterBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //InitView
+        //Click Submit
+        clickSubmit()
+    }
+
+    private fun clickSubmit() {
         binding.apply {
-            //Click
             submitBtn.setOnClickListener {
                 val name = nameEdt.text.toString()
                 val email = emailEdt.text.toString()
@@ -81,23 +85,37 @@ class RegisterFragment : Fragment() {
                 //Send Data
                 viewModel.sendRegisterUser(body)
                 //Loading
-                viewModel.loading.observe(viewLifecycleOwner) { isShow ->
-                    if (isShow) {
-                        submitLoading.showInvisible(true)
-                        submitBtn.showInvisible(false)
-                    } else {
-                        submitLoading.showInvisible(false)
-                        submitBtn.showInvisible(true)
-                    }
-                }
+                loading()
                 //Register
-                viewModel.registerUser.observe(viewLifecycleOwner) { response ->
+                register()
+            }
+        }
+    }
 
-                    lifecycle.coroutineScope.launchWhenCreated {
-                        userDataStor.saveUserToken(response.name.toString())
-                    }
+    private fun loading() {
+        binding.apply {
+            viewModel.loading.observe(viewLifecycleOwner) { isShow ->
+                if (isShow) {
+                    submitLoading.showInvisible(true)
+                    submitBtn.showInvisible(false)
+                } else {
+                    submitLoading.showInvisible(false)
+                    submitBtn.showInvisible(true)
                 }
             }
         }
+    }
+
+    private fun register() {
+        viewModel.registerUser.observe(viewLifecycleOwner) { response ->
+            lifecycle.coroutineScope.launchWhenCreated {
+                userDataStore.saveUserToken(response.name.toString())
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

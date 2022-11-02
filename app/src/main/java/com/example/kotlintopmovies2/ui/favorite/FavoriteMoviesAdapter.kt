@@ -7,20 +7,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.kotlintopmovies2.databinding.ItemPagingMoviesLastBinding
 import com.example.kotlintopmovies2.data.db.MoviesEntity
-import dagger.hilt.android.qualifiers.ApplicationContext
+import com.example.kotlintopmovies2.databinding.ItemPagingMoviesLastBinding
 
-import javax.inject.Inject
+class FavoriteMoviesAdapter : RecyclerView.Adapter<FavoriteMoviesAdapter.MyViewHolder>() {
 
-class FavoriteMoviesAdapter @Inject constructor(@ApplicationContext private val context: Context): RecyclerView.Adapter<FavoriteMoviesAdapter.MyViewHolder>() {
-
-    lateinit var binding : ItemPagingMoviesLastBinding
+    private lateinit var binding: ItemPagingMoviesLastBinding
     private var moviesList = emptyList<MoviesEntity>()
+    private lateinit var context: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        binding = ItemPagingMoviesLastBinding.inflate(inflater , parent , false)
+        binding = ItemPagingMoviesLastBinding.inflate(inflater, parent, false)
+        context = parent.context
         return MyViewHolder()
     }
 
@@ -56,21 +55,23 @@ class FavoriteMoviesAdapter @Inject constructor(@ApplicationContext private val 
         }
     }
 
-    private var onItemClickListener : ((MoviesEntity) -> Unit)? = null
-
-    fun setOnItemClickListener(listener : (MoviesEntity) -> Unit){
+    private var onItemClickListener: ((MoviesEntity) -> Unit)? = null
+    fun setOnItemClickListener(listener: (MoviesEntity) -> Unit) {
         onItemClickListener = listener
     }
 
-    fun setDataDiffer (data : List<MoviesEntity>){
+    fun setDataDiffer(data: List<MoviesEntity>) {
 
-        val moviesDiffUtils = MoviesDiffUtils(moviesList , data)
+        val moviesDiffUtils = MoviesDiffUtils(moviesList, data)
         val diffUtils = DiffUtil.calculateDiff(moviesDiffUtils)
         moviesList = data
         diffUtils.dispatchUpdatesTo(this)
     }
 
-    class MoviesDiffUtils(private val oldItem : List<MoviesEntity> , private val newItem : List<MoviesEntity>):DiffUtil.Callback(){
+    class MoviesDiffUtils(
+        private val oldItem: List<MoviesEntity>,
+        private val newItem: List<MoviesEntity>,
+    ) : DiffUtil.Callback() {
         override fun getOldListSize(): Int {
             return oldItem.size
         }

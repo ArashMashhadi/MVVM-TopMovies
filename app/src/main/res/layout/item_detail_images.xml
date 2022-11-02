@@ -33,5 +33,4 @@
             app:shapeAppearanceOverlay="@style/RoundedImageView" />
 
     </soup.neumorphism.NeumorphCardView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

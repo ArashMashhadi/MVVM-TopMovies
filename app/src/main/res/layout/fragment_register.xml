@@ -120,5 +120,4 @@
         app:layout_constraintEnd_toEndOf="@+id/submitBtn"
         app:layout_constraintStart_toStartOf="@+id/submitBtn"
         app:layout_constraintTop_toTopOf="@+id/submitBtn" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,7 +26,8 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class DetailFragment : Fragment() {
 
-    private lateinit var binding : FragmentDetailBinding
+    private var _binding: FragmentDetailBinding? = null
+    private val binding get() = _binding!!
     private val imagesAdapter: ImagesAdapter by lazy { ImagesAdapter() }
 
     @Inject
@@ -39,7 +40,7 @@ class DetailFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //Get Data
+        //Get Id
         movieId = args.moviesId
         //Call Api
         if (movieId > 0) {
@@ -48,18 +49,27 @@ class DetailFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        binding = FragmentDetailBinding.inflate(inflater,container,false)
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?,
+    ): View {
+        _binding = FragmentDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //InitView
-        binding.apply {
+        //Load data
+        loadData()
+        //Loading
+        loading()
+        //Fav Icon
+        favIcon()
+        //Back
+        back()
+    }
 
-            //Load data
+    private fun loadData() {
+        binding.apply {
             viewModel.detailMovie.observe(viewLifecycleOwner) { response ->
                 posterBigImg.load(response.poster)
                 posterNormalImg.load(response.poster) {
@@ -78,7 +88,6 @@ class DetailFragment : Fragment() {
                     LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false),
                     imagesAdapter
                 )
-
                 //Fav Click
                 favImg.setOnClickListener {
                     entity.id = movieId
@@ -90,8 +99,11 @@ class DetailFragment : Fragment() {
                     viewModel.favoriteMovies(movieId, entity)
                 }
             }
+        }
+    }
 
-            //Loading
+    private fun loading() {
+        binding.apply {
             viewModel.loading.observe(viewLifecycleOwner) {
                 if (it) {
                     detailLoading.showInvisible(true)
@@ -101,7 +113,11 @@ class DetailFragment : Fragment() {
                     detailScrollView.showInvisible(true)
                 }
             }
+        }
+    }
 
+    private fun favIcon() {
+        binding.apply {
             //Default fav icon color
             lifecycleScope.launch(Dispatchers.Main) {
                 if (viewModel.existsMovies(movieId)) {
@@ -115,7 +131,6 @@ class DetailFragment : Fragment() {
                     )
                 }
             }
-
             //Change Images with click
             viewModel.isFavorite.observe(viewLifecycleOwner) {
                 if (it) {
@@ -129,11 +144,17 @@ class DetailFragment : Fragment() {
                     )
                 }
             }
-
-            //Back
-            backImg.setOnClickListener {
-                findNavController().navigateUp()
-            }
         }
+    }
+
+    private fun back() {
+        binding.backImg.setOnClickListener {
+            findNavController().navigateUp()
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

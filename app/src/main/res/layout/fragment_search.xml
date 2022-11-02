@@ -37,6 +37,7 @@
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             app:layout_constraintTop_toTopOf="parent" />
+
     </soup.neumorphism.NeumorphCardView>
 
     <!-- RecyclerView -->

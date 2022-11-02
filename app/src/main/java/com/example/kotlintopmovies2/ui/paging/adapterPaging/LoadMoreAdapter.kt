@@ -8,11 +8,15 @@ import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlintopmovies2.databinding.LoadMoreBinding
 
-class LoadMoreAdapter(private val retry: () -> Unit) : LoadStateAdapter<LoadMoreAdapter.MyViewHolder>() {
+class LoadMoreAdapter(private val retry: () -> Unit) :
+    LoadStateAdapter<LoadMoreAdapter.MyViewHolder>() {
 
     private lateinit var binding: LoadMoreBinding
 
-    override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): LoadMoreAdapter.MyViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        loadState: LoadState,
+    ): LoadMoreAdapter.MyViewHolder {
         binding = LoadMoreBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyViewHolder(retry)
     }

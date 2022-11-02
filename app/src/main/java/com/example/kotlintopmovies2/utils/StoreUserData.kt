@@ -11,21 +11,23 @@ import javax.inject.Inject
 
 class StoreUserData @Inject constructor(@ApplicationContext val context: Context) {
 
-    companion object{
+    companion object {
         private const val USER_INFO_DATASTORE = "user_info_datastore"
         private const val USER_TOKEN = "user_token"
 
-        private val Context.dataStor:DataStore<androidx.datastore.preferences.core.Preferences> by preferencesDataStore(USER_INFO_DATASTORE)
+        private val Context.dataStore: DataStore<androidx.datastore.preferences.core.Preferences> by preferencesDataStore(
+            USER_INFO_DATASTORE)
         val userToken = stringPreferencesKey(USER_TOKEN)
     }
 
-    suspend fun saveUserToken(token:String) {
-        context.dataStor.edit {
+    suspend fun saveUserToken(token: String) {
+        context.dataStore.edit {
             it[userToken] = token
         }
     }
-        fun getUserToken()=context.dataStor.data.map {
-            it[userToken].orEmpty()
-        }
+
+    fun getUserToken() = context.dataStore.data.map {
+        it[userToken].orEmpty()
     }
+}
 

@@ -25,22 +25,19 @@ import kotlinx.coroutines.launch
 class PagingFragment : Fragment() {
 
     //Binding
-    private lateinit var binding: FragmentPagingBinding
+    private var _binding: FragmentPagingBinding?=null
+    private val binding get() = _binding!!
 
     //ViewModel
     private val viewModel: PagingViewModel by viewModels()
 
     //Adapter Paging
-    private val moviesPagingAdapter: MoviesPagingAdapter by lazy {
-        MoviesPagingAdapter(
-            requireContext()
-        )
-    }
+    private val moviesPagingAdapter: MoviesPagingAdapter by lazy { MoviesPagingAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        binding = FragmentPagingBinding.inflate(inflater, container, false)
+        _binding = FragmentPagingBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -57,8 +54,8 @@ class PagingFragment : Fragment() {
                     moviesPagingAdapter.submitData(it)
                 }
             }
-            //Loading
-            lifecycleScope.launch(Dispatchers.IO) {
+            //Refresh
+            lifecycleScope.launch {
                 Log.i("aaa", "paging1 ${Thread.currentThread().name}")
                 moviesPagingAdapter.loadStateFlow.collect {
                     val state = it.refresh
@@ -87,5 +84,10 @@ class PagingFragment : Fragment() {
                 findNavController().navigate(direction)
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

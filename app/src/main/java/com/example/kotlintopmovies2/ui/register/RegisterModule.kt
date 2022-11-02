@@ -12,5 +12,5 @@ import javax.inject.Singleton
 object RegisterModule {
     @Provides
     @Singleton
-    fun provideUserBody() = BodyRegister()
+    fun provideUserBody()= BodyRegister()
 }

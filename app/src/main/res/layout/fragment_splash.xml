@@ -89,7 +89,7 @@
             style="@style/TextViewLightStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Top Movies"
+            android:text="@string/top_movies"
             android:textColor="#0358DA"
             android:textSize="@dimen/_22font_mdp"
             android:textStyle="bold"

@@ -6,7 +6,7 @@ import com.example.kotlintopmovies2.data.model.home.ResponseMoviesList
 import retrofit2.Response
 import javax.inject.Inject
 
-class HomeRepositoryImpl @Inject constructor(private val api : ApiServices) : HomeRepository {
+class HomeRepositoryImpl @Inject constructor(private val api: ApiServices) : HomeRepository {
 
     override suspend fun topMoviesList(id: Int): Response<ResponseMoviesList> {
         return api.moviesTopList(id)
@@ -19,6 +19,4 @@ class HomeRepositoryImpl @Inject constructor(private val api : ApiServices) : Ho
     override suspend fun lastMoviesList(): Response<ResponseMoviesList> {
         return api.moviesLastList()
     }
-
-
 }

@@ -20,47 +20,62 @@ import dagger.hilt.android.AndroidEntryPoint
 class SearchFragment : Fragment() {
 
     //Binding
-    private lateinit var binding: FragmentSearchBinding
+    private var _binding: FragmentSearchBinding?=null
+    private val binding get() = _binding!!
 
     //ViewModel
     private val viewModel: SearchViewModel by viewModels()
 
     //Adapter
-    private val searchAdapter: LastMoviesAdapter by lazy { LastMoviesAdapter(requireContext()) }
+    private val searchAdapter: LastMoviesAdapter by lazy { LastMoviesAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSearchBinding.inflate(inflater, container, false)
+        _binding = FragmentSearchBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //InitView
-        binding.apply {
-
             //Search
-            searchEdt.addTextChangedListener{
-                val search = it.toString()
-                if(search.isNotEmpty()){
-                    viewModel.loadSearchMovise(search)
-                }
-            }
+            search()
             //Get movies list
-            viewModel.moviesList.observe(viewLifecycleOwner){
-                searchAdapter.setDataDiffer(it.data)
-                moviesRecycler.initRecycler(LinearLayoutManager(requireContext()),searchAdapter)
-            }
-
+            getMoviesList()
             //Click
-            searchAdapter.setOnItemClickListener {
-                val direction = SearchFragmentDirections.actionToDetail(it.id!!.toInt())
-                findNavController().navigate(direction)
-            }
-
+            clickListenerAdapter()
             //Loading
+            loading()
+            //EmptyItems
+            loadingEmpty()
+    }
+
+    private fun search(){
+        binding.searchEdt.addTextChangedListener{
+            val search = it.toString()
+            if(search.isNotEmpty()){
+                viewModel.loadSearchMovise(search)
+            }
+        }
+    }
+
+    private fun getMoviesList(){
+        viewModel.moviesList.observe(viewLifecycleOwner){
+            searchAdapter.setDataDiffer(it.data)
+            binding.moviesRecycler.initRecycler(LinearLayoutManager(requireContext()),searchAdapter)
+        }
+    }
+
+    private fun clickListenerAdapter(){
+        searchAdapter.setOnItemClickListener {
+            val direction = SearchFragmentDirections.actionToDetail(it.id!!.toInt())
+            findNavController().navigate(direction)
+        }
+    }
+
+    private fun loading(){
+        binding.apply {
             viewModel.loading.observe(viewLifecycleOwner){
                 if(it){
                     searchLoading.showInvisible(true)
@@ -68,7 +83,11 @@ class SearchFragment : Fragment() {
                     searchLoading.showInvisible(false)
                 }
             }
-            //EmptyItems
+        }
+    }
+
+    private fun loadingEmpty(){
+        binding.apply {
             viewModel.empty.observe(viewLifecycleOwner){
                 if(it){
                     emptyItemsLay.showInvisible(true)
@@ -79,5 +98,10 @@ class SearchFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

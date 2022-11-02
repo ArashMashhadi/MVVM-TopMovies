@@ -13,9 +13,7 @@ import javax.inject.Inject
 @HiltViewModel
 class PagingViewModel @Inject constructor(private val repository: PagingRepository) : ViewModel() {
 
-    val moviesLit = Pager(PagingConfig(1)){
+    val moviesLit = Pager(PagingConfig(1)) {
         MoviesPagingSource(repository)
-
     }.flow.cachedIn(viewModelScope)
-
 }

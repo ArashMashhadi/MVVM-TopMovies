@@ -22,7 +22,6 @@ class DetailViewModel @Inject constructor(private val repository: DetailReposito
     private val _detailMovie = MutableLiveData<ResponseDetail>()
     val detailMovie: LiveData<ResponseDetail>
         get() = _detailMovie
-
     val loading = MutableLiveData<Boolean>()
 
     fun loadDetailMovies(id: Int) = viewModelScope.launch(Dispatchers.IO) {
@@ -43,7 +42,6 @@ class DetailViewModel @Inject constructor(private val repository: DetailReposito
 
     fun favoriteMovies(id: Int, entity: MoviesEntity) = viewModelScope.launch {
         Log.i("aaa", "detail1 ${Thread.currentThread().name}")
-
         val exists = repository.existsMovies(id)
         if (exists) {
             isFavorite.postValue(false)

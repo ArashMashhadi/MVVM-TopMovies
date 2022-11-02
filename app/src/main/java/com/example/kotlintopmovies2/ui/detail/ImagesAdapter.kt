@@ -8,15 +8,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.kotlintopmovies2.databinding.ItemDetailImagesBinding
-import javax.inject.Inject
 
-class ImagesAdapter @Inject constructor(): RecyclerView.Adapter<ImagesAdapter.MyViewHolder>() {
+class ImagesAdapter : RecyclerView.Adapter<ImagesAdapter.MyViewHolder>() {
 
-    lateinit var binding : ItemDetailImagesBinding
+    private lateinit var binding: ItemDetailImagesBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        binding = ItemDetailImagesBinding.inflate(inflater , parent , false)
+        binding = ItemDetailImagesBinding.inflate(inflater, parent, false)
         return MyViewHolder()
     }
 
@@ -30,9 +29,9 @@ class ImagesAdapter @Inject constructor(): RecyclerView.Adapter<ImagesAdapter.My
     inner class MyViewHolder : RecyclerView.ViewHolder(binding.root) {
 
         @SuppressLint("SetTextI18n")
-        fun setData(item : String){
+        fun setData(item: String) {
             binding.apply {
-                itemImages.load(item){
+                itemImages.load(item) {
                     crossfade(true)
                     crossfade(800)
                 }
@@ -40,14 +39,15 @@ class ImagesAdapter @Inject constructor(): RecyclerView.Adapter<ImagesAdapter.My
         }
     }
 
-    private val differCallBack = object : DiffUtil.ItemCallback<String>(){
+    private val differCallBack = object : DiffUtil.ItemCallback<String>() {
         override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
             return oldItem == newItem
         }
+
         override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
             return oldItem == newItem
         }
     }
 
-    val differ = AsyncListDiffer(this , differCallBack)
+    val differ = AsyncListDiffer(this, differCallBack)
 }

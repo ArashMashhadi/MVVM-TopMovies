@@ -28,5 +28,4 @@
         <include layout="@layout/empty_items" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

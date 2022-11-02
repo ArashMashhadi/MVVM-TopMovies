@@ -5,10 +5,9 @@ import com.example.kotlintopmovies2.data.model.home.ResponseMoviesList
 import retrofit2.Response
 import javax.inject.Inject
 
-class PagingRepositoryImpl @Inject constructor(private val api : ApiServices) : PagingRepository {
+class PagingRepositoryImpl @Inject constructor(private val api: ApiServices) : PagingRepository {
 
     override suspend fun getAllMovies(page: Int): Response<ResponseMoviesList> {
         return api.getAllMovies(page)
     }
-
 }

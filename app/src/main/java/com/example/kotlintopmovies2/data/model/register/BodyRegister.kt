@@ -8,5 +8,5 @@ data class BodyRegister(
     @SerializedName("email")
     var email: String = "",
     @SerializedName("password")
-    var password: String = ""
+    var password: String = "",
 )

@@ -4,6 +4,5 @@ import com.example.kotlintopmovies2.data.model.home.ResponseMoviesList
 import retrofit2.Response
 
 interface SearchRepository {
-    suspend fun searchMovies (name : String) : Response<ResponseMoviesList>
-
+    suspend fun searchMovies(name: String): Response<ResponseMoviesList>
 }

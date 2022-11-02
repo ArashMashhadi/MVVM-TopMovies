@@ -15,7 +15,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object ModuleRoom {
 
-    private const val MOVIES_DATABASE ="movies_database"
+    private const val MOVIES_DATABASE = "movies_database"
     const val MOVIES_TABLE = "movies_table"
 
     @Provides

@@ -5,7 +5,7 @@ import com.example.kotlintopmovies2.data.model.home.ResponseMoviesList
 import retrofit2.Response
 
 interface HomeRepository {
-    suspend fun topMoviesList (id : Int) : Response<ResponseMoviesList>
-    suspend fun genresList () : Response<ResponseGenresList>
-    suspend fun lastMoviesList () : Response<ResponseMoviesList>
+    suspend fun topMoviesList(id: Int): Response<ResponseMoviesList>
+    suspend fun genresList(): Response<ResponseGenresList>
+    suspend fun lastMoviesList(): Response<ResponseMoviesList>
 }

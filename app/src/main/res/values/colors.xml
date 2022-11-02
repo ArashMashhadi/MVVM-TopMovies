@@ -7,7 +7,6 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
     <!--My colors-->
     <color name="chinesBlack">#0e0f14</color>
     <color name="chinesBlackAlpha">#C80E0F14</color>
@@ -17,7 +16,6 @@
     <color name="philippineSilver">#B3B3B3</color>
     <color name="philippineSilverAlpha">#94B3B3B3</color>
     <color name="gunmetal">#2C2E43</color>
-
     <!--Dashboard colors-->
     <color name="primary">#2D7DF6</color>
     <color name="background">#E4EBF5</color>

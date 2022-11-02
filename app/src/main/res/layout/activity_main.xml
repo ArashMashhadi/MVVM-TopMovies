@@ -44,7 +44,6 @@
             app:neumorph_shapeType="pressed"
             tools:ignore="missingConstraints">
 
-
             <ImageView
                 android:id="@+id/homeImg"
                 android:layout_width="@dimen/_32mdp"
@@ -53,7 +52,6 @@
                 android:padding="@dimen/_5mdp"
                 android:src="@drawable/ic_home"
                 app:tint="@color/crayola" />
-
 
         </soup.neumorphism.NeumorphCardView>
 
@@ -68,7 +66,6 @@
             app:neumorph_shapeAppearance="@style/NeumorphismCard"
             tools:ignore="missingConstraints">
 
-
             <ImageView
                 android:id="@+id/searchImg"
                 android:layout_width="@dimen/_32mdp"
@@ -77,7 +74,6 @@
                 android:padding="@dimen/_5mdp"
                 android:src="@drawable/ic_search"
                 app:tint="@color/primary" />
-
 
         </soup.neumorphism.NeumorphCardView>
 
@@ -92,7 +88,6 @@
             app:neumorph_shapeAppearance="@style/NeumorphismCard"
             tools:ignore="missingConstraints">
 
-
             <ImageView
                 android:id="@+id/favoritImg"
                 android:layout_width="@dimen/_32mdp"
@@ -101,7 +96,6 @@
                 android:padding="@dimen/_5mdp"
                 android:src="@drawable/ic_favorite"
                 app:tint="@color/primary" />
-
 
         </soup.neumorphism.NeumorphCardView>
 
@@ -116,7 +110,6 @@
             app:neumorph_shapeAppearance="@style/NeumorphismCard"
             tools:ignore="missingConstraints">
 
-
             <ImageView
                 android:id="@+id/pagingImg"
                 android:layout_width="@dimen/_32mdp"
@@ -126,14 +119,12 @@
                 android:src="@drawable/ic_paging"
                 app:tint="@color/primary" />
 
-
         </soup.neumorphism.NeumorphCardView>
 
         <androidx.constraintlayout.helper.widget.Flow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:constraint_referenced_ids="home,search,favorit,paging" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

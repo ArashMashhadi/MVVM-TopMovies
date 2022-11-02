@@ -12,12 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <!-- Container -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
 
             <!-- Top movies lay -->
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,7 +23,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent">
-
 
                 <!-- Top movies -->
                 <androidx.recyclerview.widget.RecyclerView

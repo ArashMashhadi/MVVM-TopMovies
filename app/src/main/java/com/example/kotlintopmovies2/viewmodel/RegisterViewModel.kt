@@ -20,15 +20,12 @@ class RegisterViewModel @Inject constructor(private val repository: RegisterRepo
 
     fun sendRegisterUser(body: BodyRegister) = viewModelScope.launch(Dispatchers.IO) {
         Log.i("aaa", "register ${Thread.currentThread().name}")
-
         loading.postValue(true)
-
         repository.registerUser(body).also {
             if (it.isSuccessful) {
                 registerUser.postValue(it.body())
             }
         }
-
         loading.postValue(false)
     }
 }

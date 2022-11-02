@@ -6,10 +6,10 @@ import retrofit2.Response
 
 interface DetailRepository {
     //Api
-    suspend fun detailMovies (id: Int) : Response<ResponseDetail>
+    suspend fun detailMovies(id: Int): Response<ResponseDetail>
 
     //DataBase
-    suspend fun insertMovies (entity: MoviesEntity)
-    suspend fun deleteMovies (entity: MoviesEntity)
-    suspend fun existsMovies (id: Int) : Boolean
+    suspend fun insertMovies(entity: MoviesEntity)
+    suspend fun deleteMovies(entity: MoviesEntity)
+    suspend fun existsMovies(id: Int): Boolean
 }

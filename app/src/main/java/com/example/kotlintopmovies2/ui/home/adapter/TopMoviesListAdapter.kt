@@ -10,22 +10,25 @@ import com.bumptech.glide.Glide
 import com.example.kotlintopmovies2.databinding.ItemHomeMoviesTopBinding
 import com.example.kotlintopmovies2.data.model.home.ResponseMoviesList
 
-class TopMoviesListAdapter:ListAdapter<ResponseMoviesList.Data,TopMoviesListAdapter.MyViewHolder>(ListMovieDiffUtil) {
+class TopMoviesListAdapter :
+    ListAdapter<ResponseMoviesList.Data, TopMoviesListAdapter.MyViewHolder>(ListMovieDiffUtil) {
 
     private lateinit var binding: ItemHomeMoviesTopBinding
-    private lateinit var context: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        binding = ItemHomeMoviesTopBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        context = parent.context
-        return MyViewHolder(binding,context)
+        binding =
+            ItemHomeMoviesTopBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MyViewHolder(binding, parent.context)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.setData(currentList[position])
     }
 
-     class MyViewHolder (private var binding: ItemHomeMoviesTopBinding,private var context: Context): RecyclerView.ViewHolder(binding.root) {
+    class MyViewHolder(
+        private var binding: ItemHomeMoviesTopBinding,
+        private var context: Context,
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         @SuppressLint("SetTextI18n")
         fun setData(item: ResponseMoviesList.Data) {

@@ -8,19 +8,19 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.kotlintopmovies2.databinding.ItemHomeMoviesTopBinding
 import com.example.kotlintopmovies2.data.model.home.ResponseMoviesList
-import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
+import com.example.kotlintopmovies2.databinding.ItemHomeMoviesTopBinding
 
-class TopMoviesAdapter @Inject constructor(@ApplicationContext private val context: Context) :
+class TopMoviesAdapter :
     RecyclerView.Adapter<TopMoviesAdapter.MyViewHolder>() {
 
-    lateinit var binding: ItemHomeMoviesTopBinding
+    private lateinit var binding: ItemHomeMoviesTopBinding
+    private lateinit var context: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         binding =
             ItemHomeMoviesTopBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        context = parent.context
         return MyViewHolder()
     }
 
@@ -30,8 +30,7 @@ class TopMoviesAdapter @Inject constructor(@ApplicationContext private val conte
         holder.setIsRecyclable(false)
     }
 
-    override fun getItemCount() = if(differ.currentList.size > 10) 10 else differ.currentList.size
-
+    override fun getItemCount() = if (differ.currentList.size > 10) 10 else differ.currentList.size
 
     inner class MyViewHolder : RecyclerView.ViewHolder(binding.root) {
 
@@ -49,7 +48,7 @@ class TopMoviesAdapter @Inject constructor(@ApplicationContext private val conte
     private val differCallBack = object : DiffUtil.ItemCallback<ResponseMoviesList.Data>() {
         override fun areItemsTheSame(
             oldItem: ResponseMoviesList.Data,
-            newItem: ResponseMoviesList.Data
+            newItem: ResponseMoviesList.Data,
         ): Boolean {
 
             return oldItem.id == newItem.id
@@ -57,12 +56,11 @@ class TopMoviesAdapter @Inject constructor(@ApplicationContext private val conte
 
         override fun areContentsTheSame(
             oldItem: ResponseMoviesList.Data,
-            newItem: ResponseMoviesList.Data
+            newItem: ResponseMoviesList.Data,
         ): Boolean {
 
             return oldItem == newItem
         }
-
     }
 
     val differ = AsyncListDiffer(this, differCallBack)

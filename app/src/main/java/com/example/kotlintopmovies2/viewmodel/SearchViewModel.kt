@@ -20,14 +20,13 @@ class SearchViewModel @Inject constructor(private val repository: SearchReposito
 
     fun loadSearchMovise(name: String) = viewModelScope.launch(Dispatchers.IO) {
         Log.i("aaa", "search ${Thread.currentThread().name}")
-
         loading.postValue(true)
         val response = repository.searchMovies(name)
-        if(response.isSuccessful){
-            if(response.body()?.data!!.isNotEmpty()){
+        if (response.isSuccessful) {
+            if (response.body()?.data!!.isNotEmpty()) {
                 moviesList.postValue(response.body())
                 empty.postValue(false)
-            }else{
+            } else {
                 empty.postValue(true)
             }
         }

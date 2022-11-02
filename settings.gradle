@@ -16,5 +16,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+
 rootProject.name = "Kotlin Top Movies 2"
 include ':app'

@@ -4,6 +4,5 @@ import com.example.kotlintopmovies2.data.model.home.ResponseMoviesList
 import retrofit2.Response
 
 interface PagingRepository {
-    suspend fun getAllMovies(page : Int) : Response<ResponseMoviesList>
-
+    suspend fun getAllMovies(page: Int): Response<ResponseMoviesList>
 }

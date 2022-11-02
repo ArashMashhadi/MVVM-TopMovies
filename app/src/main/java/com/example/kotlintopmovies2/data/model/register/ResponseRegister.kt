@@ -13,5 +13,5 @@ data class ResponseRegister(
     @SerializedName("name")
     val name: String?, // Abbas Ov
     @SerializedName("updated_at")
-    val updatedAt: String? // 2020-10-10 12:12:23
+    val updatedAt: String?, // 2020-10-10 12:12:23
 )

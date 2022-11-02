@@ -24,4 +24,5 @@
     <string name="search1">Search</string>
     <string name="favorite">Favorite</string>
     <string name="paging">Paging</string>
+    <string name="top_movies">Top Movies</string>
 </resources>

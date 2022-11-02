@@ -8,7 +8,10 @@ import retrofit2.Response
 
 import javax.inject.Inject
 
-class DetailRepositoryImpl @Inject constructor(private val api : ApiServices, private val dao : MoviesDao) : DetailRepository {
+class DetailRepositoryImpl @Inject constructor(
+    private val api: ApiServices,
+    private val dao: MoviesDao,
+) : DetailRepository {
 
     override suspend fun detailMovies(id: Int): Response<ResponseDetail> {
         return api.detailMovies(id)
@@ -22,7 +25,7 @@ class DetailRepositoryImpl @Inject constructor(private val api : ApiServices, pr
         return dao.deleteMovies(entity)
     }
 
-    override suspend fun existsMovies(id: Int) : Boolean{
+    override suspend fun existsMovies(id: Int): Boolean {
         return dao.existsMovies(id)
     }
 

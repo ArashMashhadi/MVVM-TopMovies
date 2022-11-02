@@ -7,7 +7,7 @@ data class ResponseMoviesList(
     @SerializedName("data")
     val `data`: List<Data>,
     @SerializedName("metadata")
-    val metadata: Metadata?
+    val metadata: Metadata?,
 ) {
     data class Data(
         @SerializedName("country")
@@ -25,7 +25,7 @@ data class ResponseMoviesList(
         @SerializedName("title")
         val title: String?, // The Shawshank Redemption
         @SerializedName("year")
-        val year: String? // 1994
+        val year: String?, // 1994
     )
 
     data class Metadata(
@@ -36,6 +36,6 @@ data class ResponseMoviesList(
         @SerializedName("per_page")
         val perPage: Int?, // 10
         @SerializedName("total_count")
-        val totalCount: Int? // 59
+        val totalCount: Int?, // 59
     )
 }

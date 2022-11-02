@@ -12,10 +12,11 @@ import com.example.kotlintopmovies2.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(),View.OnClickListener {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     //Binding
-    private lateinit var binding: ActivityMainBinding
+    private var _binding: ActivityMainBinding? = null
+    private val binding get() = _binding!!
 
     //Navigation
     private lateinit var navHostFragment: NavHostFragment
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         //InitView
@@ -36,12 +37,11 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
             paging.setOnClickListener(this@MainActivity)
 
             initNavigation()
-
         }
     }
 
     //Init Navigation
-    private fun initNavigation(){
+    private fun initNavigation() {
         binding.apply {
             navHostFragment =
                 supportFragmentManager.findFragmentById(R.id.navHost) as NavHostFragment
@@ -73,25 +73,68 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
         binding.apply {
             when (v.id) {
                 R.id.home -> {
-                    bottomNav(R.id.homeFragment,R.color.crayola,R.color.primary,R.color.primary,R.color.primary,2,0,0,0)
+                    bottomNavigation(R.id.homeFragment,
+                        R.color.crayola,
+                        R.color.primary,
+                        R.color.primary,
+                        R.color.primary,
+                        2,
+                        0,
+                        0,
+                        0)
                 }
                 R.id.search -> {
-                    bottomNav(R.id.searchFragment,R.color.primary,R.color.crayola,R.color.primary,R.color.primary,0,2,0,0)
+                    bottomNavigation(R.id.searchFragment,
+                        R.color.primary,
+                        R.color.crayola,
+                        R.color.primary,
+                        R.color.primary,
+                        0,
+                        2,
+                        0,
+                        0)
                 }
                 R.id.favorit -> {
-                    bottomNav(R.id.favoriteFragment,R.color.primary,R.color.primary,R.color.crayola,R.color.primary,0,0,2,0)
+                    bottomNavigation(R.id.favoriteFragment,
+                        R.color.primary,
+                        R.color.primary,
+                        R.color.crayola,
+                        R.color.primary,
+                        0,
+                        0,
+                        2,
+                        0)
                 }
                 R.id.paging -> {
-                    bottomNav(R.id.pagingFragment,R.color.primary,R.color.primary,R.color.primary,R.color.crayola,0,0,0,2)
+                    bottomNavigation(R.id.pagingFragment,
+                        R.color.primary,
+                        R.color.primary,
+                        R.color.primary,
+                        R.color.crayola,
+                        0,
+                        0,
+                        0,
+                        2)
                 }
             }
         }
     }
 
-    private fun bottomNav(fragment:Int, colorHomeImg: Int, colorSearchImg: Int, colorFavoritImg: Int, colorPagingImg: Int, intHome: Int, intSearch: Int, intFavorit: Int, intPaging: Int ) {
+    private fun bottomNavigation(
+        fragment: Int,
+        colorHomeImg: Int,
+        colorSearchImg: Int,
+        colorFavoritImg: Int,
+        colorPagingImg: Int,
+        intHome: Int,
+        intSearch: Int,
+        intFavorit: Int,
+        intPaging: Int,
+    ) {
         binding.apply {
             homeImg.setColorFilter(
-                ContextCompat.getColor(applicationContext, colorHomeImg), android.graphics.PorterDuff.Mode.SRC_IN
+                ContextCompat.getColor(applicationContext, colorHomeImg),
+                android.graphics.PorterDuff.Mode.SRC_IN
             );
             searchImg.setColorFilter(
                 ContextCompat.getColor(applicationContext, colorSearchImg),
@@ -112,5 +155,10 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
             favorit.setShapeType(intFavorit)
             paging.setShapeType(intPaging)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

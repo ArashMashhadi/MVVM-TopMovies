@@ -8,6 +8,7 @@ import com.example.kotlintopmovies2.data.model.register.ResponseRegister
 import retrofit2.Response
 import retrofit2.http.*
 
+
 interface ApiServices {
     @POST("register")
     suspend fun registerUser(@Body body: BodyRegister): Response<ResponseRegister>

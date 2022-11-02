@@ -6,20 +6,23 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.kotlintopmovies2.databinding.ItemPagingMoviesLastBinding
 import com.example.kotlintopmovies2.data.model.home.ResponseMoviesList
-import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Inject
+import com.example.kotlintopmovies2.databinding.ItemPagingMoviesLastBinding
 
-class LastMoviesAdapter @Inject constructor(@ApplicationContext private val context : Context) : RecyclerView.Adapter<LastMoviesAdapter.MyViewHolder>() {
+class LastMoviesAdapter : RecyclerView.Adapter<LastMoviesAdapter.MyViewHolder>() {
 
-    private lateinit var binding : ItemPagingMoviesLastBinding
+    private lateinit var binding: ItemPagingMoviesLastBinding
     private var moviesList = emptyList<ResponseMoviesList.Data>()
+    private lateinit var context: Context
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LastMoviesAdapter.MyViewHolder {
-
-    binding = ItemPagingMoviesLastBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-    return MyViewHolder()
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int,
+    ): LastMoviesAdapter.MyViewHolder {
+        binding =
+            ItemPagingMoviesLastBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        context = parent.context
+        return MyViewHolder()
     }
 
     override fun onBindViewHolder(holder: LastMoviesAdapter.MyViewHolder, position: Int) {
@@ -29,9 +32,9 @@ class LastMoviesAdapter @Inject constructor(@ApplicationContext private val cont
 
     override fun getItemCount() = moviesList.size
 
-    inner class  MyViewHolder : RecyclerView.ViewHolder(binding.root) {
+    inner class MyViewHolder : RecyclerView.ViewHolder(binding.root) {
 
-        fun bindData(item : ResponseMoviesList.Data){
+        fun bindData(item: ResponseMoviesList.Data) {
             binding.apply {
                 moviesNameTxt.text = item.title
                 moviesRateTxt.text = item.imdbRating
@@ -40,46 +43,45 @@ class LastMoviesAdapter @Inject constructor(@ApplicationContext private val cont
                 Glide.with(context).load(item.poster).into(moviesPosterImg)
 
                 //Click
-                root.setOnClickListener{
+                root.setOnClickListener {
                     onItemClickListener?.let {
                         it(item)
                     }
                 }
             }
         }
-
     }
 
-    private var onItemClickListener : ((ResponseMoviesList.Data) -> Unit)? = null
-
-    fun setOnItemClickListener(listener : (ResponseMoviesList.Data) -> Unit){
+    private var onItemClickListener: ((ResponseMoviesList.Data) -> Unit)? = null
+    fun setOnItemClickListener(listener: (ResponseMoviesList.Data) -> Unit) {
         onItemClickListener = listener
     }
 
-    fun setDataDiffer(data : List<ResponseMoviesList.Data>) {
-        val moviesDiffUtil = MoviesDiffUtils(moviesList,data)
+    fun setDataDiffer(data: List<ResponseMoviesList.Data>) {
+        val moviesDiffUtil = MoviesDiffUtils(moviesList, data)
         val diffUtils = DiffUtil.calculateDiff(moviesDiffUtil)
         moviesList = data
         diffUtils.dispatchUpdatesTo(this)
-
     }
 
-    class MoviesDiffUtils(private val oldItem : List<ResponseMoviesList.Data> , private val newItem : List<ResponseMoviesList.Data>) :DiffUtil.Callback(){
+    class MoviesDiffUtils(
+        private val oldItem: List<ResponseMoviesList.Data>,
+        private val newItem: List<ResponseMoviesList.Data>,
+    ) : DiffUtil.Callback() {
         override fun getOldListSize(): Int {
-        return oldItem.size
+            return oldItem.size
         }
 
         override fun getNewListSize(): Int {
-        return newItem.size
+            return newItem.size
         }
 
         override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldItem[oldItemPosition] === newItem[newItemPosition]
+            return oldItem[oldItemPosition] === newItem[newItemPosition]
         }
 
         override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldItem[oldItemPosition] === newItem[newItemPosition]
+            return oldItem[oldItemPosition] === newItem[newItemPosition]
         }
-
     }
 }

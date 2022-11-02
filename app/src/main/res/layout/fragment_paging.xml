@@ -29,5 +29,4 @@
             tools:listitem="@layout/item_paging_movies_last" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

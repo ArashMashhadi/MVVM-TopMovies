@@ -7,7 +7,7 @@ import com.example.kotlintopmovies2.data.repository.PagingRepository
 import javax.inject.Inject
 
 class MoviesPagingSource @Inject constructor(private val repository: PagingRepository) :
-    PagingSource<Int , ResponseMoviesList.Data> (){
+    PagingSource<Int, ResponseMoviesList.Data>() {
 
     override fun getRefreshKey(state: PagingState<Int, ResponseMoviesList.Data>): Int? {
         return null
@@ -23,11 +23,11 @@ class MoviesPagingSource @Inject constructor(private val repository: PagingRepos
 
             LoadResult.Page(
                 data = responseData,
-                prevKey = if(currentPage == 1) null else -1,
+                prevKey = if (currentPage == 1) null else -1,
                 nextKey = currentPage.plus(1)
             )
 
-        }catch (e:Exception){
+        } catch (e: Exception) {
             LoadResult.Error(e)
         }
     }

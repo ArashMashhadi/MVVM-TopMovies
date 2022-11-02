@@ -43,5 +43,5 @@ data class ResponseDetail(
     @SerializedName("writer")
     val writer: String?, // Stephen King (short story "Rita Hayworth and Shawshank Redemption"), Frank Darabont (screenplay)
     @SerializedName("year")
-    val year: String? // 1994
+    val year: String?, // 1994
 )

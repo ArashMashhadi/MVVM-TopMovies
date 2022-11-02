@@ -5,6 +5,5 @@ import com.example.kotlintopmovies2.data.model.register.ResponseRegister
 import retrofit2.Response
 
 interface RegisterRepository {
-    suspend fun registerUser(body : BodyRegister) : Response<ResponseRegister>
-
+    suspend fun registerUser(body: BodyRegister): Response<ResponseRegister>
 }
