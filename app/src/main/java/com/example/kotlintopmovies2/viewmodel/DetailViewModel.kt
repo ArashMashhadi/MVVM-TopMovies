@@ -29,10 +29,12 @@ class DetailViewModel @Inject constructor(private val repository: DetailReposito
 
         loading.postValue(true)
         val response = repository.detailMovies(id)
-        if (response.isSuccessful) {
-            _detailMovie.postValue(response.body())
+        response.collect {
+            if (it.isSuccessful) {
+                _detailMovie.postValue(it.body())
+            }
+            loading.postValue(false)
         }
-        loading.postValue(false)
     }
 
     //DataBase

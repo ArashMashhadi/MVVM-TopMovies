@@ -15,24 +15,31 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val repository: HomeRepository) : ViewModel() {
 
-    val topMoviesList = MutableLiveData<ResponseMoviesList>()
-    val genresList = MutableLiveData<ResponseGenresList>()
-    val lastMoviesList = MutableLiveData<ResponseMoviesList>()
+    private val _topMoviesList = MutableLiveData<ResponseMoviesList>()
+    val topMoviesList get() = _topMoviesList
+    private val _genresList = MutableLiveData<ResponseGenresList>()
+    val genresList get() = _genresList
+    private val _lastMoviesList = MutableLiveData<ResponseMoviesList>()
+    val lastMoviesList get() = _lastMoviesList
     val loading = MutableLiveData<Boolean>()
 
     fun loadTopMoviesList(id: Int) = viewModelScope.launch(Dispatchers.IO) {
         Log.i("aaa", "home ${Thread.currentThread().name}")
         val response = repository.topMoviesList(id)
-        if (response.isSuccessful) {
-            topMoviesList.postValue(response.body())
+        response.collect {
+            if (it.isSuccessful) {
+                _topMoviesList.postValue(it.body())
+            }
         }
     }
 
     fun loadGenresList() = viewModelScope.launch(Dispatchers.IO) {
         Log.i("aaa", "home1 ${Thread.currentThread().name}")
         val response = repository.genresList()
-        if (response.isSuccessful) {
-            genresList.postValue(response.body())
+        response.collect {
+            if (it.isSuccessful) {
+                _genresList.postValue(it.body())
+            }
         }
     }
 
@@ -40,9 +47,11 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
         Log.i("aaa", "home2 ${Thread.currentThread().name}")
         loading.postValue(true)
         val response = repository.lastMoviesList()
-        if (response.isSuccessful) {
-            lastMoviesList.postValue(response.body())
+        response.collect {
+            if (it.isSuccessful) {
+                _lastMoviesList.postValue(it.body())
+            }
+            loading.postValue(false)
         }
-        loading.postValue(false)
     }
 }

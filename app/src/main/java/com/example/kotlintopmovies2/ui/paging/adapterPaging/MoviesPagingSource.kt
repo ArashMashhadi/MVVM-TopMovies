@@ -14,19 +14,19 @@ class MoviesPagingSource @Inject constructor(private val repository: PagingRepos
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ResponseMoviesList.Data> {
+        val responseData = mutableListOf<ResponseMoviesList.Data>()
         return try {
             val currentPage = params.key ?: 1
             val response = repository.getAllMovies(currentPage)
-            val data = response.body()?.data ?: emptyList()
-            val responseData = mutableListOf<ResponseMoviesList.Data>()
-            responseData.addAll(data)
-
+            response.collect {
+                val data = it.body()?.data ?: emptyList()
+                responseData.addAll(data)
+            }
             LoadResult.Page(
                 data = responseData,
                 prevKey = if (currentPage == 1) null else -1,
                 nextKey = currentPage.plus(1)
             )
-
         } catch (e: Exception) {
             LoadResult.Error(e)
         }

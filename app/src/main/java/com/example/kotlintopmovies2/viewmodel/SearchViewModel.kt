@@ -18,16 +18,18 @@ class SearchViewModel @Inject constructor(private val repository: SearchReposito
     val loading = MutableLiveData<Boolean>()
     val empty = MutableLiveData<Boolean>()
 
-    fun loadSearchMovise(name: String) = viewModelScope.launch(Dispatchers.IO) {
+    fun loadSearchMovies(name: String) = viewModelScope.launch(Dispatchers.IO) {
         Log.i("aaa", "search ${Thread.currentThread().name}")
         loading.postValue(true)
         val response = repository.searchMovies(name)
-        if (response.isSuccessful) {
-            if (response.body()?.data!!.isNotEmpty()) {
-                moviesList.postValue(response.body())
-                empty.postValue(false)
-            } else {
-                empty.postValue(true)
+        response.collect {
+            if (it.isSuccessful) {
+                if (it.body()?.data!!.isNotEmpty()) {
+                    moviesList.postValue(it.body())
+                    empty.postValue(false)
+                } else {
+                    empty.postValue(true)
+                }
             }
         }
         loading.postValue(false)

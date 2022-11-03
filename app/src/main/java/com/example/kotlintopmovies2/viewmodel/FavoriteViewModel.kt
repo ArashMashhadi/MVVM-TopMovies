@@ -14,17 +14,20 @@ import javax.inject.Inject
 @HiltViewModel
 class FavoriteViewModel @Inject constructor(private val repository : FavoriteRepository) : ViewModel() {
 
-    val favoriteList = MutableLiveData<MutableList<MoviesEntity>>()
+    private val _favoriteList = MutableLiveData<MutableList<MoviesEntity>>()
+    val favoriteList get() = _favoriteList
     val empty = MutableLiveData<Boolean>()
 
     fun loadFavoriteList() = viewModelScope.launch(Dispatchers.IO) {
-        Log.i("aaa", "favorit ${Thread.currentThread().name}")
+        Log.i("aaa", "favorite ${Thread.currentThread().name}")
         val list = repository.allFavoriteList()
-        if(list.isNotEmpty()){
-                favoriteList.postValue(list)
+        list.collect {
+            if (it.isNotEmpty()) {
+                _favoriteList.postValue(it)
                 empty.postValue(false)
-            }else{
+            } else {
                 empty.postValue(true)
+            }
         }
     }
 }

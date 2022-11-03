@@ -55,7 +55,7 @@ class SearchFragment : Fragment() {
         binding.searchEdt.addTextChangedListener{
             val search = it.toString()
             if(search.isNotEmpty()){
-                viewModel.loadSearchMovise(search)
+                viewModel.loadSearchMovies(search)
             }
         }
     }

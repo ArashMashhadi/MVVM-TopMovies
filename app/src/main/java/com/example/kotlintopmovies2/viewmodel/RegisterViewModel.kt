@@ -15,15 +15,16 @@ import javax.inject.Inject
 @HiltViewModel
 class RegisterViewModel @Inject constructor(private val repository: RegisterRepository) :
     ViewModel() {
-    val registerUser = MutableLiveData<ResponseRegister>()
+    private val _registerUser = MutableLiveData<ResponseRegister>()
+    val registerUser get() = _registerUser
     val loading = MutableLiveData<Boolean>()
 
     fun sendRegisterUser(body: BodyRegister) = viewModelScope.launch(Dispatchers.IO) {
         Log.i("aaa", "register ${Thread.currentThread().name}")
         loading.postValue(true)
-        repository.registerUser(body).also {
+        repository.registerUser(body).collect {
             if (it.isSuccessful) {
-                registerUser.postValue(it.body())
+                _registerUser.postValue(it.body())
             }
         }
         loading.postValue(false)
